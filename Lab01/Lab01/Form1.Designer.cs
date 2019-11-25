@@ -28,15 +28,13 @@
         /// </summary>
 
         #endregion
-
-        private SharpGL.OpenGLControl openGLControl1;
-        private System.Windows.Forms.RadioButton rd_Line;
-        private System.Windows.Forms.RadioButton rd_Tri;
-        private System.Windows.Forms.RadioButton rd_Rec;
-        private System.Windows.Forms.RadioButton rd_pen;
-        private System.Windows.Forms.RadioButton rd_hex;
-        private System.Windows.Forms.RadioButton rd_cir;
-        private System.Windows.Forms.RadioButton rd_ecl;
+        private System.Windows.Forms.Button btnTriangle;
+        private System.Windows.Forms.Button btnLine;
+        private System.Windows.Forms.Button btnRectangle;
+        private System.Windows.Forms.Button btnPentagon;
+        private System.Windows.Forms.Button BtnHexagon;
+        private System.Windows.Forms.Button btnCircle;
+        private System.Windows.Forms.Button btnEllipse;
     }
 }
 

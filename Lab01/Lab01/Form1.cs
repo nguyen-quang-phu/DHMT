@@ -18,7 +18,7 @@ namespace Lab01
         int n_shapes = 0; //Số lượng hình đã vẽ       
         Object currentShape; //Hình đang được vẽ
 
-        enum Mode { Line, Circle, Rectangle, Eclipse, Triangle, Pentagon, Hexagon }; //Các chế độ vẽ hình
+        enum Mode { Line, Circle, Rectangle, Ellipse, Triangle, Pentagon, Hexagon }; //Các chế độ vẽ hình
         Mode currentMode = Mode.Line;   //Chế độ hiện tại
         Color currentLineColor = new Color();   //Màu viền hiện tại            
 
@@ -43,25 +43,25 @@ namespace Lab01
         private void InitializeComponent()
         {
             this.openGLControl = new SharpGL.OpenGLControl();
-            this.rd_Line = new System.Windows.Forms.RadioButton();
-            this.rd_Tri = new System.Windows.Forms.RadioButton();
-            this.rd_Rec = new System.Windows.Forms.RadioButton();
-            this.rd_pen = new System.Windows.Forms.RadioButton();
-            this.rd_hex = new System.Windows.Forms.RadioButton();
-            this.rd_cir = new System.Windows.Forms.RadioButton();
-            this.rd_ecl = new System.Windows.Forms.RadioButton();
+            this.btnEllipse = new System.Windows.Forms.Button();
+            this.btnCircle = new System.Windows.Forms.Button();
+            this.BtnHexagon = new System.Windows.Forms.Button();
+            this.btnPentagon = new System.Windows.Forms.Button();
+            this.btnRectangle = new System.Windows.Forms.Button();
+            this.btnLine = new System.Windows.Forms.Button();
+            this.btnTriangle = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.openGLControl)).BeginInit();
             this.SuspendLayout();
             // 
             // openGLControl
             // 
             this.openGLControl.DrawFPS = false;
-            this.openGLControl.Location = new System.Drawing.Point(12, 71);
+            this.openGLControl.Location = new System.Drawing.Point(12, 64);
             this.openGLControl.Name = "openGLControl";
             this.openGLControl.OpenGLVersion = SharpGL.Version.OpenGLVersion.OpenGL2_1;
             this.openGLControl.RenderContextType = SharpGL.RenderContextType.DIBSection;
             this.openGLControl.RenderTrigger = SharpGL.RenderTrigger.TimerBased;
-            this.openGLControl.Size = new System.Drawing.Size(561, 407);
+            this.openGLControl.Size = new System.Drawing.Size(694, 440);
             this.openGLControl.TabIndex = 0;
             this.openGLControl.OpenGLInitialized += new System.EventHandler(this.openGLControl_OpenGLInitialized);
             this.openGLControl.Resized += new System.EventHandler(this.openGLControl_Resized);
@@ -70,106 +70,113 @@ namespace Lab01
             this.openGLControl.MouseMove += new System.Windows.Forms.MouseEventHandler(this.openGLControl_MouseMove);
             this.openGLControl.MouseUp += new System.Windows.Forms.MouseEventHandler(this.openGLControl_MouseUp);
             // 
-            // rd_Line
+            // btnEllipse
             // 
-            this.rd_Line.AutoSize = true;
-            this.rd_Line.Location = new System.Drawing.Point(48, 33);
-            this.rd_Line.Name = "rd_Line";
-            this.rd_Line.Size = new System.Drawing.Size(45, 17);
-            this.rd_Line.TabIndex = 1;
-            this.rd_Line.TabStop = true;
-            this.rd_Line.Text = "Line";
-            this.rd_Line.UseVisualStyleBackColor = true;
-            this.rd_Line.CheckedChanged += new System.EventHandler(this.rd_Line_CheckedChanged);
+            this.btnEllipse.Image = global::Lab01.Properties.Resources.Ellipse;
+            this.btnEllipse.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEllipse.Location = new System.Drawing.Point(251, 27);
+            this.btnEllipse.Name = "btnEllipse";
+            this.btnEllipse.Size = new System.Drawing.Size(75, 31);
+            this.btnEllipse.TabIndex = 14;
+            this.btnEllipse.Text = "Ellipse";
+            this.btnEllipse.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEllipse.UseVisualStyleBackColor = true;
+            this.btnEllipse.Click += new System.EventHandler(this.btnEllipse_Click);
             // 
-            // rd_Tri
+            // btnCircle
             // 
-            this.rd_Tri.AutoSize = true;
-            this.rd_Tri.Location = new System.Drawing.Point(100, 33);
-            this.rd_Tri.Name = "rd_Tri";
-            this.rd_Tri.Size = new System.Drawing.Size(63, 17);
-            this.rd_Tri.TabIndex = 2;
-            this.rd_Tri.TabStop = true;
-            this.rd_Tri.Text = "Triangle";
-            this.rd_Tri.UseVisualStyleBackColor = true;
-            this.rd_Tri.CheckedChanged += new System.EventHandler(this.rd_Tri_CheckedChanged);
+            this.btnCircle.Image = global::Lab01.Properties.Resources.Circle;
+            this.btnCircle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCircle.Location = new System.Drawing.Point(77, 27);
+            this.btnCircle.Name = "btnCircle";
+            this.btnCircle.Size = new System.Drawing.Size(65, 31);
+            this.btnCircle.TabIndex = 13;
+            this.btnCircle.Text = "Circle";
+            this.btnCircle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCircle.UseVisualStyleBackColor = true;
+            this.btnCircle.Click += new System.EventHandler(this.btnCircle_Click);
             // 
-            // rd_Rec
+            // BtnHexagon
             // 
-            this.rd_Rec.AutoSize = true;
-            this.rd_Rec.Location = new System.Drawing.Point(170, 33);
-            this.rd_Rec.Name = "rd_Rec";
-            this.rd_Rec.Size = new System.Drawing.Size(74, 17);
-            this.rd_Rec.TabIndex = 3;
-            this.rd_Rec.TabStop = true;
-            this.rd_Rec.Text = "Rectangle";
-            this.rd_Rec.UseVisualStyleBackColor = true;
-            this.rd_Rec.CheckedChanged += new System.EventHandler(this.rd_Rec_CheckedChanged);
+            this.BtnHexagon.Image = global::Lab01.Properties.Resources.Hexagon;
+            this.BtnHexagon.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnHexagon.Location = new System.Drawing.Point(499, 27);
+            this.BtnHexagon.Name = "BtnHexagon";
+            this.BtnHexagon.Size = new System.Drawing.Size(83, 31);
+            this.BtnHexagon.TabIndex = 12;
+            this.BtnHexagon.Text = "Hexagon";
+            this.BtnHexagon.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnHexagon.UseVisualStyleBackColor = true;
+            this.BtnHexagon.Click += new System.EventHandler(this.BtnHexagon_Click);
             // 
-            // rd_pen
+            // btnPentagon
             // 
-            this.rd_pen.AutoSize = true;
-            this.rd_pen.Location = new System.Drawing.Point(251, 33);
-            this.rd_pen.Name = "rd_pen";
-            this.rd_pen.Size = new System.Drawing.Size(71, 17);
-            this.rd_pen.TabIndex = 4;
-            this.rd_pen.TabStop = true;
-            this.rd_pen.Text = "Pentagon";
-            this.rd_pen.UseVisualStyleBackColor = true;
-            this.rd_pen.CheckedChanged += new System.EventHandler(this.rd_pen_CheckedChanged);
+            this.btnPentagon.Image = global::Lab01.Properties.Resources.Pentagon;
+            this.btnPentagon.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPentagon.Location = new System.Drawing.Point(409, 27);
+            this.btnPentagon.Name = "btnPentagon";
+            this.btnPentagon.Size = new System.Drawing.Size(84, 31);
+            this.btnPentagon.TabIndex = 11;
+            this.btnPentagon.Text = "Pentagon";
+            this.btnPentagon.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPentagon.UseVisualStyleBackColor = true;
+            this.btnPentagon.Click += new System.EventHandler(this.btnPentagon_Click);
             // 
-            // rd_hex
+            // btnRectangle
             // 
-            this.rd_hex.AutoSize = true;
-            this.rd_hex.Location = new System.Drawing.Point(329, 33);
-            this.rd_hex.Name = "rd_hex";
-            this.rd_hex.Size = new System.Drawing.Size(68, 17);
-            this.rd_hex.TabIndex = 5;
-            this.rd_hex.TabStop = true;
-            this.rd_hex.Text = "Hexagon";
-            this.rd_hex.UseVisualStyleBackColor = true;
-            this.rd_hex.CheckedChanged += new System.EventHandler(this.rd_hex_CheckedChanged);
+            this.btnRectangle.Image = global::Lab01.Properties.Resources.Rectangle;
+            this.btnRectangle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRectangle.Location = new System.Drawing.Point(154, 27);
+            this.btnRectangle.Name = "btnRectangle";
+            this.btnRectangle.Size = new System.Drawing.Size(91, 31);
+            this.btnRectangle.TabIndex = 10;
+            this.btnRectangle.Text = "Rectangle";
+            this.btnRectangle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnRectangle.UseVisualStyleBackColor = true;
+            this.btnRectangle.Click += new System.EventHandler(this.btnRectangle_Click);
             // 
-            // rd_cir
+            // btnLine
             // 
-            this.rd_cir.AutoSize = true;
-            this.rd_cir.Location = new System.Drawing.Point(404, 33);
-            this.rd_cir.Name = "rd_cir";
-            this.rd_cir.Size = new System.Drawing.Size(51, 17);
-            this.rd_cir.TabIndex = 6;
-            this.rd_cir.TabStop = true;
-            this.rd_cir.Text = "Circle";
-            this.rd_cir.UseVisualStyleBackColor = true;
-            this.rd_cir.CheckedChanged += new System.EventHandler(this.rd_cir_CheckedChanged);
+            this.btnLine.Enabled = false;
+            this.btnLine.Image = global::Lab01.Properties.Resources.Line1;
+            this.btnLine.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLine.Location = new System.Drawing.Point(12, 27);
+            this.btnLine.Name = "btnLine";
+            this.btnLine.Size = new System.Drawing.Size(59, 31);
+            this.btnLine.TabIndex = 9;
+            this.btnLine.Text = "Line";
+            this.btnLine.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLine.UseVisualStyleBackColor = true;
+            this.btnLine.Click += new System.EventHandler(this.btnLine_Click);
             // 
-            // rd_ecl
+            // btnTriangle
             // 
-            this.rd_ecl.AutoSize = true;
-            this.rd_ecl.Location = new System.Drawing.Point(462, 33);
-            this.rd_ecl.Name = "rd_ecl";
-            this.rd_ecl.Size = new System.Drawing.Size(59, 17);
-            this.rd_ecl.TabIndex = 7;
-            this.rd_ecl.TabStop = true;
-            this.rd_ecl.Text = "Eclipse";
-            this.rd_ecl.UseVisualStyleBackColor = true;
-            this.rd_ecl.CheckedChanged += new System.EventHandler(this.rd_ecl_CheckedChanged);
+            this.btnTriangle.Image = global::Lab01.Properties.Resources.Triangle1;
+            this.btnTriangle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTriangle.Location = new System.Drawing.Point(332, 27);
+            this.btnTriangle.Name = "btnTriangle";
+            this.btnTriangle.Size = new System.Drawing.Size(71, 31);
+            this.btnTriangle.TabIndex = 8;
+            this.btnTriangle.Text = "Triangle";
+            this.btnTriangle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnTriangle.UseVisualStyleBackColor = true;
+            this.btnTriangle.Click += new System.EventHandler(this.btnTriangle_Click);
             // 
             // Lab01
             // 
-            this.ClientSize = new System.Drawing.Size(629, 482);
-            this.Controls.Add(this.rd_ecl);
-            this.Controls.Add(this.rd_cir);
-            this.Controls.Add(this.rd_hex);
-            this.Controls.Add(this.rd_pen);
-            this.Controls.Add(this.rd_Rec);
-            this.Controls.Add(this.rd_Tri);
-            this.Controls.Add(this.rd_Line);
+            this.ClientSize = new System.Drawing.Size(740, 516);
+            this.Controls.Add(this.btnEllipse);
+            this.Controls.Add(this.btnCircle);
+            this.Controls.Add(this.BtnHexagon);
+            this.Controls.Add(this.btnPentagon);
+            this.Controls.Add(this.btnRectangle);
+            this.Controls.Add(this.btnLine);
+            this.Controls.Add(this.btnTriangle);
             this.Controls.Add(this.openGLControl);
             this.Name = "Lab01";
             this.Text = "Lab01";
             ((System.ComponentModel.ISupportInitialize)(this.openGLControl)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
         public Lab01()
@@ -177,50 +184,37 @@ namespace Lab01
             InitializeComponent();
         }
 
-       
-
-
-        private void rd_Line_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rd_Tri_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rd_Rec_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rd_pen_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rd_hex_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rd_cir_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rd_ecl_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void openGLControl_MouseDown(object sender, MouseEventArgs e)
         {
             pStart.setPoint(e.Location.X, openGLControl.Height - e.Location.Y);
             isDrawing = true;
-            currentShape = new Line();
-            currentShape.LineColor = currentLineColor;
+            switch (currentMode)
+            {
+                case Mode.Line:
+                    currentShape = new Line();
+                    break;
+                case Mode.Triangle:
+                    //currentShape = new Triangle();
+                    break;
+                case Mode.Rectangle:
+                    currentShape = new Rectangle();
+                    break;
+                case Mode.Circle:
+                    //currentShape = new Circle();
+                    break;
+                case Mode.Ellipse:
+                    currentShape = new Ellipse();
+                    break;
+                case Mode.Pentagon:
+                    currentShape = new Pentagon();
+                    break;
+                case Mode.Hexagon:
+                    currentShape = new Hexagon();
+                    break;
+            }
+            //currentShape.LineColor = currentLineColor;
+            //currentShape.LineWidth = (int)lst_Width.Value;
         }
 
         private void openGLControl_MouseMove(object sender, MouseEventArgs e)
@@ -235,6 +229,16 @@ namespace Lab01
             gl.Flush();
         }
 
+        private void openGLControl_MouseUp(object sender, MouseEventArgs e)
+        {
+            isDrawing = false;
+
+            //Hoàn tất vẽ hình
+            //timer_Drawing.Stop();
+            //Thêm hình mới vào danh sách các hình đã vẽ
+            shapes.Add(currentShape);
+            n_shapes++;
+        }
         private void openGLControl_OpenGLInitialized(object sender, EventArgs e)
         {
             gl = openGLControl.OpenGL;
@@ -252,21 +256,97 @@ namespace Lab01
             gl.Ortho2D(0, openGLControl.Width, 0, openGLControl.Height);
         }
 
+        private void btnLine_Click(object sender, EventArgs e)
+        {
+            btnLine.Enabled = false;
+            btnCircle.Enabled = true;
+            btnRectangle.Enabled = true;
+            btnEllipse.Enabled = true;
+            btnTriangle.Enabled = true;
+            btnPentagon.Enabled = true;
+            BtnHexagon.Enabled = true;
+            currentMode = Mode.Line;
+        }
+
+        private void btnCircle_Click(object sender, EventArgs e)
+        {
+            btnLine.Enabled = true;
+            btnCircle.Enabled = false;
+            btnRectangle.Enabled = true;
+            btnEllipse.Enabled = true;
+            btnTriangle.Enabled = true;
+            btnPentagon.Enabled = true;
+            BtnHexagon.Enabled = true;
+            currentMode = Mode.Circle;
+        }
+
+        private void btnRectangle_Click(object sender, EventArgs e)
+        {
+            btnLine.Enabled = true;
+            btnCircle.Enabled = true;
+            btnRectangle.Enabled = false;
+            btnEllipse.Enabled = true;
+            btnTriangle.Enabled = true;
+            btnPentagon.Enabled = true;
+            BtnHexagon.Enabled = true;
+            currentMode = Mode.Rectangle;
+        }
+
+        private void btnEllipse_Click(object sender, EventArgs e)
+        {
+            btnLine.Enabled = true;
+            btnCircle.Enabled = true;
+            btnRectangle.Enabled = true;
+            btnEllipse.Enabled = false;
+            btnTriangle.Enabled = true;
+            btnPentagon.Enabled = true;
+            BtnHexagon.Enabled = true;
+            currentMode = Mode.Ellipse;
+        }
+
+        private void btnTriangle_Click(object sender, EventArgs e)
+        {
+            btnLine.Enabled = true;
+            btnCircle.Enabled = true;
+            btnRectangle.Enabled = true;
+            btnEllipse.Enabled = true;
+            btnTriangle.Enabled = false;
+            btnPentagon.Enabled = true;
+            BtnHexagon.Enabled = true;
+            currentMode = Mode.Triangle;
+        }
+
+        private void btnPentagon_Click(object sender, EventArgs e)
+        {
+            btnLine.Enabled = true;
+            btnCircle.Enabled = true;
+            btnRectangle.Enabled = true;
+            btnEllipse.Enabled = true;
+            btnTriangle.Enabled = true;
+            btnPentagon.Enabled = false;
+            BtnHexagon.Enabled = true;
+            currentMode = Mode.Pentagon;
+        }
+
+        private void BtnHexagon_Click(object sender, EventArgs e)
+        {
+            btnLine.Enabled = true;
+            btnCircle.Enabled = true;
+            btnRectangle.Enabled = true;
+            btnEllipse.Enabled = true;
+            btnTriangle.Enabled = true;
+            btnPentagon.Enabled = true;
+            BtnHexagon.Enabled = false;
+            currentMode = Mode.Hexagon;
+        }
+
         private void openGLControl_Load(object sender, EventArgs e)
         {
             gl.ClearColor(1f, 1f, 1f, 1f);
             gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT);
         }
 
-        private void openGLControl_MouseUp(object sender, MouseEventArgs e)
-        {
-            isDrawing = false;
 
-            //Hoàn tất vẽ hình
-            //timer_Drawing.Stop();
-            //Thêm hình mới vào danh sách các hình đã vẽ
-            shapes.Add(currentShape);
-            n_shapes++;
-        }
+        
     }
 }
