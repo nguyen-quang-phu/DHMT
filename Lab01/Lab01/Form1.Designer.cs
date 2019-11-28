@@ -35,6 +35,7 @@
         private System.Windows.Forms.Button BtnHexagon;
         private System.Windows.Forms.Button btnCircle;
         private System.Windows.Forms.Button btnEllipse;
+        private System.Windows.Forms.Button btnPolygon;
     }
 }
 

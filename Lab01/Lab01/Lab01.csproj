@@ -62,6 +62,7 @@
     </Compile>
     <Compile Include="Hexagon.cs" />
     <Compile Include="Line.cs" />
+    <Compile Include="MultiP_Poly.cs" />
     <Compile Include="Object.cs" />
     <Compile Include="Pentagon.cs" />
     <Compile Include="Point.cs" />

@@ -17,8 +17,9 @@ namespace Lab01
         List<Object> shapes = new List<Object>(); //Các hình đã vẽ
         int n_shapes = 0; //Số lượng hình đã vẽ       
         Object currentShape; //Hình đang được vẽ
+        int Selected = -1;  // có được chọn hay k
 
-        enum Mode { Line, Circle, Rectangle, Ellipse, Triangle, Pentagon, Hexagon }; //Các chế độ vẽ hình
+        enum Mode { Line, Circle, Rectangle, Ellipse, Triangle, Pentagon, Hexagon, Polygon }; //Các chế độ vẽ hình
         Mode currentMode = Mode.Line;   //Chế độ hiện tại
         Color currentLineColor = new Color();   //Màu viền hiện tại            
 
@@ -31,7 +32,7 @@ namespace Lab01
         //***********************************
         OpenGLControl openGLControl;
         private void renderShapes()
-        {            
+        {
             //Reset lại khung vẽ
             gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT);
             //Vẽ lại các hình
@@ -50,6 +51,7 @@ namespace Lab01
             this.btnRectangle = new System.Windows.Forms.Button();
             this.btnLine = new System.Windows.Forms.Button();
             this.btnTriangle = new System.Windows.Forms.Button();
+            this.btnPolygon = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.openGLControl)).BeginInit();
             this.SuspendLayout();
             // 
@@ -162,9 +164,24 @@ namespace Lab01
             this.btnTriangle.UseVisualStyleBackColor = true;
             this.btnTriangle.Click += new System.EventHandler(this.btnTriangle_Click);
             // 
+            // btnPolygon
+            // 
+            this.btnPolygon.Image = global::Lab01.Properties.Resources.Hexagon;
+            this.btnPolygon.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPolygon.Location = new System.Drawing.Point(588, 27);
+            this.btnPolygon.Name = "btnPolygon";
+            this.btnPolygon.Size = new System.Drawing.Size(83, 31);
+            this.btnPolygon.TabIndex = 15;
+            this.btnPolygon.Text = "Polygon";
+            this.btnPolygon.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPolygon.UseVisualStyleBackColor = true;
+            this.btnPolygon.Click += new System.EventHandler(this.btnPolygon_Click);
+
+            // 
             // Lab01
             // 
             this.ClientSize = new System.Drawing.Size(740, 516);
+            this.Controls.Add(this.btnPolygon);
             this.Controls.Add(this.btnEllipse);
             this.Controls.Add(this.btnCircle);
             this.Controls.Add(this.BtnHexagon);
@@ -172,6 +189,7 @@ namespace Lab01
             this.Controls.Add(this.btnRectangle);
             this.Controls.Add(this.btnLine);
             this.Controls.Add(this.btnTriangle);
+            this.Controls.Add(this.btnPolygon);
             this.Controls.Add(this.openGLControl);
             this.Name = "Lab01";
             this.Text = "Lab01";
@@ -185,9 +203,134 @@ namespace Lab01
         }
 
 
+        private void btnLine_Click(object sender, EventArgs e)
+        {
+            btnLine.Enabled = false;
+            btnCircle.Enabled = true;
+            btnRectangle.Enabled = true;
+            btnEllipse.Enabled = true;
+            btnTriangle.Enabled = true;
+            btnPentagon.Enabled = true;
+            BtnHexagon.Enabled = true;
+            btnPolygon.Enabled = true;
+            currentMode = Mode.Line;
+        }
+
+        private void btnCircle_Click(object sender, EventArgs e)
+        {
+            btnLine.Enabled = true;
+            btnCircle.Enabled = false;
+            btnRectangle.Enabled = true;
+            btnEllipse.Enabled = true;
+            btnTriangle.Enabled = true;
+            btnPentagon.Enabled = true;
+            BtnHexagon.Enabled = true;
+            btnPolygon.Enabled = true;
+            currentMode = Mode.Circle;
+        }
+
+        private void btnRectangle_Click(object sender, EventArgs e)
+        {
+            btnLine.Enabled = true;
+            btnCircle.Enabled = true;
+            btnRectangle.Enabled = false;
+            btnEllipse.Enabled = true;
+            btnTriangle.Enabled = true;
+            btnPentagon.Enabled = true;
+            BtnHexagon.Enabled = true;
+            btnPolygon.Enabled = true;
+            currentMode = Mode.Rectangle;
+        }
+
+        private void btnEllipse_Click(object sender, EventArgs e)
+        {
+            btnLine.Enabled = true;
+            btnCircle.Enabled = true;
+            btnRectangle.Enabled = true;
+            btnEllipse.Enabled = false;
+            btnTriangle.Enabled = true;
+            btnPentagon.Enabled = true;
+            BtnHexagon.Enabled = true;
+            btnPolygon.Enabled = true;
+            currentMode = Mode.Ellipse;
+        }
+
+        private void btnTriangle_Click(object sender, EventArgs e)
+        {
+            btnLine.Enabled = true;
+            btnCircle.Enabled = true;
+            btnRectangle.Enabled = true;
+            btnEllipse.Enabled = true;
+            btnTriangle.Enabled = false;
+            btnPentagon.Enabled = true;
+            BtnHexagon.Enabled = true;
+            btnPolygon.Enabled = true;
+            currentMode = Mode.Triangle;
+        }
+
+        private void btnPentagon_Click(object sender, EventArgs e)
+        {
+            btnLine.Enabled = true;
+            btnCircle.Enabled = true;
+            btnRectangle.Enabled = true;
+            btnEllipse.Enabled = true;
+            btnTriangle.Enabled = true;
+            btnPentagon.Enabled = false;
+            BtnHexagon.Enabled = true;
+            btnPolygon.Enabled = true;
+            currentMode = Mode.Pentagon;
+        }
+
+        private void BtnHexagon_Click(object sender, EventArgs e)
+        {
+            btnLine.Enabled = true;
+            btnCircle.Enabled = true;
+            btnRectangle.Enabled = true;
+            btnEllipse.Enabled = true;
+            btnTriangle.Enabled = true;
+            btnPentagon.Enabled = true;
+            BtnHexagon.Enabled = false;
+            btnPolygon.Enabled = true;
+            currentMode = Mode.Hexagon;
+        }
+
+        private void btnPolygon_Click(object sender, EventArgs e)
+        {
+            btnLine.Enabled = true;
+            btnCircle.Enabled = true;
+            btnRectangle.Enabled = true;
+            btnEllipse.Enabled = true;
+            btnTriangle.Enabled = true;
+            btnPentagon.Enabled = true;
+            BtnHexagon.Enabled = true;
+            btnPolygon.Enabled = false;
+            currentMode = Mode.Polygon;
+        }
+
+
         private void openGLControl_MouseDown(object sender, MouseEventArgs e)
         {
+
             pStart.setPoint(e.Location.X, openGLControl.Height - e.Location.Y);
+
+            if (currentMode == Mode.Polygon)
+            {
+                if (!isDrawing)
+                {
+                    Selected = -1;
+                    renderShapes();
+                    currentShape = new MultiP_Poly();
+                    currentShape.LineColor = currentLineColor;
+                    //currentShape.LineWidth = (int)lst_Width.Value;
+                    //currentShape.FillColor = currentFillColor;
+
+                    isDrawing = true;
+                    //timer_Drawing.Start();
+                    timeDrawing = 0;
+                }
+                return;
+            }
+
             isDrawing = true;
             switch (currentMode)
             {
@@ -221,16 +364,50 @@ namespace Lab01
         {
             if (!isDrawing) return;
             pEnd.setPoint(e.Location.X, openGLControl.Height - e.Location.Y); //Cập nhật điểm chặn cuối khi di chuyển chuột
-
-            //Đang vẽ hình
-            currentShape.set(pStart, pEnd); //Cập nhật kích thước hình đang vẽ      
-            renderShapes();
-            currentShape.Draw(gl);
-            gl.Flush();
+            if (currentMode == Mode.Polygon)
+            {
+                ((MultiP_Poly)currentShape).moveVertex(pEnd);
+                renderShapes();
+                currentShape.Draw(gl);
+            }
+            else
+            {
+                //Đang vẽ hình
+                currentShape.set(pStart, pEnd); //Cập nhật kích thước hình đang vẽ      
+                renderShapes();
+                currentShape.Draw(gl);
+                gl.Flush();
+            }
         }
 
         private void openGLControl_MouseUp(object sender, MouseEventArgs e)
         {
+            if (currentMode == Mode.Polygon)
+            {
+                if (isDrawing)
+                {
+                    if (e.Button == System.Windows.Forms.MouseButtons.Right)    //Kết thúc vẽ một đa giác
+                    {
+                        shapes.Add(((MultiP_Poly)currentShape).getPolygon());
+                        n_shapes++;
+                        isDrawing = false;
+                        //timer_Drawing.Stop();
+                        renderShapes();
+                    }
+                    else
+                    {
+                        if (((MultiP_Poly)currentShape).nPoly == 0)
+                        {
+                            ((MultiP_Poly)currentShape).addVertex(new Point(e.Location.X, openGLControl.Height - e.Location.Y));
+                        }
+                        ((MultiP_Poly)currentShape).addVertex(new Point(e.Location.X, openGLControl.Height - e.Location.Y));
+
+                        currentShape.Draw(gl);
+                    }
+                }
+                return;
+            }
+
             isDrawing = false;
 
             //Hoàn tất vẽ hình
@@ -256,89 +433,7 @@ namespace Lab01
             gl.Ortho2D(0, openGLControl.Width, 0, openGLControl.Height);
         }
 
-        private void btnLine_Click(object sender, EventArgs e)
-        {
-            btnLine.Enabled = false;
-            btnCircle.Enabled = true;
-            btnRectangle.Enabled = true;
-            btnEllipse.Enabled = true;
-            btnTriangle.Enabled = true;
-            btnPentagon.Enabled = true;
-            BtnHexagon.Enabled = true;
-            currentMode = Mode.Line;
-        }
 
-        private void btnCircle_Click(object sender, EventArgs e)
-        {
-            btnLine.Enabled = true;
-            btnCircle.Enabled = false;
-            btnRectangle.Enabled = true;
-            btnEllipse.Enabled = true;
-            btnTriangle.Enabled = true;
-            btnPentagon.Enabled = true;
-            BtnHexagon.Enabled = true;
-            currentMode = Mode.Circle;
-        }
-
-        private void btnRectangle_Click(object sender, EventArgs e)
-        {
-            btnLine.Enabled = true;
-            btnCircle.Enabled = true;
-            btnRectangle.Enabled = false;
-            btnEllipse.Enabled = true;
-            btnTriangle.Enabled = true;
-            btnPentagon.Enabled = true;
-            BtnHexagon.Enabled = true;
-            currentMode = Mode.Rectangle;
-        }
-
-        private void btnEllipse_Click(object sender, EventArgs e)
-        {
-            btnLine.Enabled = true;
-            btnCircle.Enabled = true;
-            btnRectangle.Enabled = true;
-            btnEllipse.Enabled = false;
-            btnTriangle.Enabled = true;
-            btnPentagon.Enabled = true;
-            BtnHexagon.Enabled = true;
-            currentMode = Mode.Ellipse;
-        }
-
-        private void btnTriangle_Click(object sender, EventArgs e)
-        {
-            btnLine.Enabled = true;
-            btnCircle.Enabled = true;
-            btnRectangle.Enabled = true;
-            btnEllipse.Enabled = true;
-            btnTriangle.Enabled = false;
-            btnPentagon.Enabled = true;
-            BtnHexagon.Enabled = true;
-            currentMode = Mode.Triangle;
-        }
-
-        private void btnPentagon_Click(object sender, EventArgs e)
-        {
-            btnLine.Enabled = true;
-            btnCircle.Enabled = true;
-            btnRectangle.Enabled = true;
-            btnEllipse.Enabled = true;
-            btnTriangle.Enabled = true;
-            btnPentagon.Enabled = false;
-            BtnHexagon.Enabled = true;
-            currentMode = Mode.Pentagon;
-        }
-
-        private void BtnHexagon_Click(object sender, EventArgs e)
-        {
-            btnLine.Enabled = true;
-            btnCircle.Enabled = true;
-            btnRectangle.Enabled = true;
-            btnEllipse.Enabled = true;
-            btnTriangle.Enabled = true;
-            btnPentagon.Enabled = true;
-            BtnHexagon.Enabled = false;
-            currentMode = Mode.Hexagon;
-        }
 
         private void openGLControl_Load(object sender, EventArgs e)
         {
@@ -347,6 +442,6 @@ namespace Lab01
         }
 
 
-        
+
     }
 }
