@@ -18,8 +18,10 @@ namespace Lab01
         int n_shapes = 0; //Số lượng hình đã vẽ       
         Object currentShape; //Hình đang được vẽ
         int Selected = -1;  // có được chọn hay k
+        int objectId = -1;  //Hình đang được chọn
+        int chosenControlPointId = -1;  // điểm điều khiển được chọn
 
-        enum Mode { Line, Circle, Rectangle, Ellipse, Triangle, Pentagon, Hexagon, Polygon }; //Các chế độ vẽ hình
+        enum Mode { Line, Circle, Rectangle, Ellipse, Triangle, Pentagon, Hexagon, Polygon, Select }; //Các chế độ vẽ hình
         Mode currentMode = Mode.Line;   //Chế độ hiện tại
         Color currentLineColor = new Color();   //Màu viền hiện tại            
 
@@ -52,6 +54,7 @@ namespace Lab01
             this.btnLine = new System.Windows.Forms.Button();
             this.btnTriangle = new System.Windows.Forms.Button();
             this.btnPolygon = new System.Windows.Forms.Button();
+            this.btnSelect = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.openGLControl)).BeginInit();
             this.SuspendLayout();
             // 
@@ -176,12 +179,24 @@ namespace Lab01
             this.btnPolygon.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPolygon.UseVisualStyleBackColor = true;
             this.btnPolygon.Click += new System.EventHandler(this.btnPolygon_Click);
-
+            // 
+            // btnSelect
+            // 
+            this.btnSelect.Image = global::Lab01.Properties.Resources.Line1;
+            this.btnSelect.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSelect.Location = new System.Drawing.Point(677, 27);
+            this.btnSelect.Name = "btnSelect";
+            this.btnSelect.Size = new System.Drawing.Size(76, 31);
+            this.btnSelect.TabIndex = 16;
+            this.btnSelect.Text = "Select";
+            this.btnSelect.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSelect.UseVisualStyleBackColor = true;
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
             // Lab01
             // 
-            this.ClientSize = new System.Drawing.Size(740, 516);
-            this.Controls.Add(this.btnPolygon);
+            this.ClientSize = new System.Drawing.Size(765, 516);
+            this.Controls.Add(this.btnSelect);
             this.Controls.Add(this.btnEllipse);
             this.Controls.Add(this.btnCircle);
             this.Controls.Add(this.BtnHexagon);
@@ -213,6 +228,7 @@ namespace Lab01
             btnPentagon.Enabled = true;
             BtnHexagon.Enabled = true;
             btnPolygon.Enabled = true;
+            btnSelect.Enabled = true;
             currentMode = Mode.Line;
         }
 
@@ -226,6 +242,7 @@ namespace Lab01
             btnPentagon.Enabled = true;
             BtnHexagon.Enabled = true;
             btnPolygon.Enabled = true;
+            btnSelect.Enabled = true;
             currentMode = Mode.Circle;
         }
 
@@ -239,6 +256,7 @@ namespace Lab01
             btnPentagon.Enabled = true;
             BtnHexagon.Enabled = true;
             btnPolygon.Enabled = true;
+            btnSelect.Enabled = true;
             currentMode = Mode.Rectangle;
         }
 
@@ -252,6 +270,7 @@ namespace Lab01
             btnPentagon.Enabled = true;
             BtnHexagon.Enabled = true;
             btnPolygon.Enabled = true;
+            btnSelect.Enabled = true;
             currentMode = Mode.Ellipse;
         }
 
@@ -265,6 +284,7 @@ namespace Lab01
             btnPentagon.Enabled = true;
             BtnHexagon.Enabled = true;
             btnPolygon.Enabled = true;
+            btnSelect.Enabled = true;
             currentMode = Mode.Triangle;
         }
 
@@ -278,6 +298,7 @@ namespace Lab01
             btnPentagon.Enabled = false;
             BtnHexagon.Enabled = true;
             btnPolygon.Enabled = true;
+            btnSelect.Enabled = true;
             currentMode = Mode.Pentagon;
         }
 
@@ -291,6 +312,7 @@ namespace Lab01
             btnPentagon.Enabled = true;
             BtnHexagon.Enabled = false;
             btnPolygon.Enabled = true;
+            btnSelect.Enabled = true;
             currentMode = Mode.Hexagon;
         }
 
@@ -304,15 +326,29 @@ namespace Lab01
             btnPentagon.Enabled = true;
             BtnHexagon.Enabled = true;
             btnPolygon.Enabled = false;
+            btnSelect.Enabled = true;
             currentMode = Mode.Polygon;
         }
 
+        private void btnSelect_Click(object sender, EventArgs e)
+        {
+            btnLine.Enabled = true;
+            btnCircle.Enabled = true;
+            btnRectangle.Enabled = true;
+            btnEllipse.Enabled = true;
+            btnTriangle.Enabled = true;
+            btnPentagon.Enabled = true;
+            BtnHexagon.Enabled = true;
+            btnPolygon.Enabled = true;
+            btnSelect.Enabled = false;
+            currentMode = Mode.Select;
+        }
 
         private void openGLControl_MouseDown(object sender, MouseEventArgs e)
         {
 
             pStart.setPoint(e.Location.X, openGLControl.Height - e.Location.Y);
-
+            // vẽ đa giác
             if (currentMode == Mode.Polygon)
             {
                 if (!isDrawing)
@@ -332,19 +368,59 @@ namespace Lab01
             }
 
             isDrawing = true;
+
+            //Chế độ chọn hình
+            if (currentMode == Mode.Select)
+            {
+                int x = pStart.X, y = pStart.Y;
+
+                if (objectId >= 0) //Xác định có kéo điểm điều khiển của hình được chọn hay không
+                {
+                    chosenControlPointId = shapes[objectId].getControlPointId(x, y);
+                    if (chosenControlPointId >= 0)
+                    {
+                        //lb_Forward.Enabled = true;
+                        //lb_Backward.Enabled = true;
+                        //lb_Delete.Enabled = true;
+                        return;
+                    }
+                }
+
+                //Xác định hình được chọn
+                objectId = -1;
+                for (int i = n_shapes - 1; i >= 0; i--)
+                    if (shapes[i].isInsideBox(x, y))
+                    {
+                        objectId = i;
+                        break;
+                    }
+
+                renderShapes();
+                if (objectId >= 0) //Có hình được chọn thì vẽ điểm điều khiển cho hình đó
+                {
+                    shapes[objectId].drawControlBox(gl);
+                    //lst_Width.Value = shapes[objectId].LineWidth;
+                    //lb_Forward.Enabled = true;
+                    //lb_Backward.Enabled = true;
+                    //lb_Delete.Enabled = true;
+                }
+
+                return;
+            }
+
             switch (currentMode)
             {
                 case Mode.Line:
                     currentShape = new Line();
                     break;
                 case Mode.Triangle:
-                    //currentShape = new Triangle();
+                    currentShape = new Triangle();
                     break;
                 case Mode.Rectangle:
                     currentShape = new Rectangle();
                     break;
                 case Mode.Circle:
-                    //currentShape = new Circle();
+                    currentShape = new Circle();
                     break;
                 case Mode.Ellipse:
                     currentShape = new Ellipse();
@@ -369,6 +445,21 @@ namespace Lab01
                 ((MultiP_Poly)currentShape).moveVertex(pEnd);
                 renderShapes();
                 currentShape.Draw(gl);
+            }
+
+            if (currentMode == Mode.Select)
+            {
+                if (objectId >= 0)
+                {
+                    if (chosenControlPointId >= 0)
+                        shapes[objectId].dragControlPoint(chosenControlPointId, pStart, pEnd); //Co giãn hình qua điểm điều khiển
+                    else shapes[objectId].translate(pStart, pEnd); //Di chuyển tịnh tiến hình được chọn
+
+                    if (chosenControlPointId != 8)
+                        pStart.setPoint(pEnd);
+                    renderShapes();
+                    shapes[objectId].drawControlBox(gl);
+                }
             }
             else
             {
@@ -409,6 +500,24 @@ namespace Lab01
             }
 
             isDrawing = false;
+
+            if (currentMode == Mode.Select)
+            {
+                if (chosenControlPointId >= 0)  //Vừa mới kéo thả điểm điều khiển
+                {
+                    renderShapes();
+                    shapes[objectId].drawControlBox(gl);
+                    chosenControlPointId = -1;
+                }
+            }
+            else
+            {
+                //Hoàn tất vẽ hình
+                //timer_Drawing.Stop();
+                //Thêm hình mới vào danh sách các hình đã vẽ
+                shapes.Add(currentShape);
+                n_shapes++;
+            }
 
             //Hoàn tất vẽ hình
             //timer_Drawing.Stop();

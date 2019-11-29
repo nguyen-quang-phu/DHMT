@@ -23,5 +23,16 @@ namespace Lab01
             p2.setPoint(Math.Max(A.X, B.X), Math.Max(A.X, B.X));
         }
         public virtual void Draw(OpenGL gl) { }
+        //Xác định hình có được chọn không
+        public virtual bool isInsideBox(int x, int y) { return false; }
+        //Xác định điểm điều khiển được chọn
+        public virtual int getControlPointId(int x, int y) { return -1; }
+
+        //Tịnh tiến hình
+        public virtual void translate(Point s, Point e) { }
+        //Co giản hình qua điểm điều khiển
+        public virtual void dragControlPoint(int CPid, Point s, Point e) { }
+        //Vẽ các điểm điều khiển
+        public virtual void drawControlBox(OpenGL gl) { }
     }
 }

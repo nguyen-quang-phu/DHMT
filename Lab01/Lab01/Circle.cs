@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Lab01
 {
-    class Ellipse : Object
+    class Circle : Object
     {
         public override void set(Point A, Point B)
         {
@@ -42,7 +42,7 @@ namespace Lab01
             int cx = (p1.X + p2.X) / 2,
                 cy = (p1.Y + p2.Y) / 2,     // Tọa độ tâm
                 rx = p2.X - cx,
-                ry = p2.Y - cy,             // 2 bán kính
+                ry = rx,             // 2 bán kính
                 x = 0, y = ry,              // tọa độ điểm bắt đầu vẽ
                 rx2 = rx * rx,
                 ry2 = ry * ry,              // rx^2, ry^2 

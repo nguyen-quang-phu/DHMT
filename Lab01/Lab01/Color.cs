@@ -11,5 +11,24 @@ namespace Lab01
         public float R { get; set; }    //Kênh màu red
         public float G { get; set; }    //Kênh màu green
         public float B { get; set; }    //Kênh màu blue
+
+        public Color(float r = 0, float g = 0, float b = 0)
+        {
+            R = r;
+            G = g;
+            B = b;
+        }
+        public Color(Color c)
+        {
+            R = c.R;
+            G = c.G;
+            B = c.B;
+        }
+        public void setColor(float r, float g, float b)
+        {
+            R = r;
+            G = g;
+            B = b;
+        }
     }
 }
