@@ -33,6 +33,7 @@ namespace Lab01
         int timeDrawing = 0;    //Thời gian vẽ hình
         //***********************************
         OpenGLControl openGLControl;
+
         private void renderShapes()
         {
             //Reset lại khung vẽ
@@ -45,6 +46,7 @@ namespace Lab01
         }
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.openGLControl = new SharpGL.OpenGLControl();
             this.btnEllipse = new System.Windows.Forms.Button();
             this.btnCircle = new System.Windows.Forms.Button();
@@ -55,7 +57,15 @@ namespace Lab01
             this.btnTriangle = new System.Windows.Forms.Button();
             this.btnPolygon = new System.Windows.Forms.Button();
             this.btnSelect = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.bt_LineColor = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lst_Width = new System.Windows.Forms.NumericUpDown();
+            this.lb_Time = new System.Windows.Forms.Label();
+            this.colorDialog = new System.Windows.Forms.ColorDialog();
+            this.timer_Drawing = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.openGLControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lst_Width)).BeginInit();
             this.SuspendLayout();
             // 
             // openGLControl
@@ -66,7 +76,7 @@ namespace Lab01
             this.openGLControl.OpenGLVersion = SharpGL.Version.OpenGLVersion.OpenGL2_1;
             this.openGLControl.RenderContextType = SharpGL.RenderContextType.DIBSection;
             this.openGLControl.RenderTrigger = SharpGL.RenderTrigger.TimerBased;
-            this.openGLControl.Size = new System.Drawing.Size(694, 440);
+            this.openGLControl.Size = new System.Drawing.Size(659, 440);
             this.openGLControl.TabIndex = 0;
             this.openGLControl.OpenGLInitialized += new System.EventHandler(this.openGLControl_OpenGLInitialized);
             this.openGLControl.Resized += new System.EventHandler(this.openGLControl_Resized);
@@ -193,9 +203,74 @@ namespace Lab01
             this.btnSelect.UseVisualStyleBackColor = true;
             this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(699, 95);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(54, 13);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Line Color";
+            // 
+            // bt_LineColor
+            // 
+            this.bt_LineColor.BackColor = System.Drawing.SystemColors.ControlText;
+            this.bt_LineColor.Location = new System.Drawing.Point(702, 111);
+            this.bt_LineColor.Name = "bt_LineColor";
+            this.bt_LineColor.Size = new System.Drawing.Size(65, 24);
+            this.bt_LineColor.TabIndex = 18;
+            this.bt_LineColor.UseVisualStyleBackColor = false;
+            this.bt_LineColor.Click += new System.EventHandler(this.bt_LineColor_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(699, 158);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(58, 13);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "Line Width";
+            // 
+            // lst_Width
+            // 
+            this.lst_Width.Location = new System.Drawing.Point(702, 174);
+            this.lst_Width.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.lst_Width.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.lst_Width.Name = "lst_Width";
+            this.lst_Width.Size = new System.Drawing.Size(65, 20);
+            this.lst_Width.TabIndex = 20;
+            this.lst_Width.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.lst_Width.ValueChanged += new System.EventHandler(this.lst_Width_ValueChanged);
+            // 
+            // lb_Time
+            // 
+            this.lb_Time.AutoSize = true;
+            this.lb_Time.Location = new System.Drawing.Point(699, 491);
+            this.lb_Time.Name = "lb_Time";
+            this.lb_Time.Size = new System.Drawing.Size(37, 13);
+            this.lb_Time.TabIndex = 21;
+            this.lb_Time.Text = "0:00.0";
+            // 
             // Lab01
             // 
-            this.ClientSize = new System.Drawing.Size(765, 516);
+            this.ClientSize = new System.Drawing.Size(780, 516);
+            this.Controls.Add(this.lb_Time);
+            this.Controls.Add(this.lst_Width);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.bt_LineColor);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSelect);
             this.Controls.Add(this.btnEllipse);
             this.Controls.Add(this.btnCircle);
@@ -209,12 +284,15 @@ namespace Lab01
             this.Name = "Lab01";
             this.Text = "Lab01";
             ((System.ComponentModel.ISupportInitialize)(this.openGLControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lst_Width)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
         public Lab01()
         {
             InitializeComponent();
+
         }
 
 
@@ -357,11 +435,9 @@ namespace Lab01
                     renderShapes();
                     currentShape = new MultiP_Poly();
                     currentShape.LineColor = currentLineColor;
-                    //currentShape.LineWidth = (int)lst_Width.Value;
-                    //currentShape.FillColor = currentFillColor;
-
+                    currentShape.LineWidth = (int)lst_Width.Value;
                     isDrawing = true;
-                    //timer_Drawing.Start();
+                    timer_Drawing.Start();
                     timeDrawing = 0;
                 }
                 return;
@@ -396,6 +472,7 @@ namespace Lab01
                     }
 
                 renderShapes();
+
                 if (objectId >= 0) //Có hình được chọn thì vẽ điểm điều khiển cho hình đó
                 {
                     shapes[objectId].drawControlBox(gl);
@@ -432,8 +509,8 @@ namespace Lab01
                     currentShape = new Hexagon();
                     break;
             }
-            //currentShape.LineColor = currentLineColor;
-            //currentShape.LineWidth = (int)lst_Width.Value;
+            currentShape.LineColor = currentLineColor;
+            currentShape.LineWidth = (int)lst_Width.Value;
         }
 
         private void openGLControl_MouseMove(object sender, MouseEventArgs e)
@@ -482,7 +559,7 @@ namespace Lab01
                         shapes.Add(((MultiP_Poly)currentShape).getPolygon());
                         n_shapes++;
                         isDrawing = false;
-                        //timer_Drawing.Stop();
+                        timer_Drawing.Stop();
                         renderShapes();
                     }
                     else
@@ -513,18 +590,33 @@ namespace Lab01
             else
             {
                 //Hoàn tất vẽ hình
-                //timer_Drawing.Stop();
+                timer_Drawing.Stop();
                 //Thêm hình mới vào danh sách các hình đã vẽ
                 shapes.Add(currentShape);
                 n_shapes++;
             }
-
-            //Hoàn tất vẽ hình
-            //timer_Drawing.Stop();
-            //Thêm hình mới vào danh sách các hình đã vẽ
-            shapes.Add(currentShape);
-            n_shapes++;
         }
+
+        private void timer_Drawing_Tick(object sender, EventArgs e)
+        {
+            timeDrawing++;
+            int min, sec, mil;
+            mil = timeDrawing % 10;
+            sec = (timeDrawing / 10) % 60;
+            min = timeDrawing / 600;
+            lb_Time.Text = min.ToString() + ":" + (sec < 10 ? "0" : "") + sec.ToString() + "." + mil.ToString();
+        }
+
+        private void bt_LineColor_Click(object sender, EventArgs e)
+        {
+            //Chọn màu viền
+            if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                currentLineColor = new Color(colorDialog.Color.R / 255.0f, colorDialog.Color.G / 255.0f, colorDialog.Color.B / 255.0f);
+                bt_LineColor.BackColor = colorDialog.Color;
+            }
+        }
+
         private void openGLControl_OpenGLInitialized(object sender, EventArgs e)
         {
             gl = openGLControl.OpenGL;
@@ -542,7 +634,10 @@ namespace Lab01
             gl.Ortho2D(0, openGLControl.Width, 0, openGLControl.Height);
         }
 
+        private void lst_Width_ValueChanged(object sender, EventArgs e)
+        {
 
+        }
 
         private void openGLControl_Load(object sender, EventArgs e)
         {

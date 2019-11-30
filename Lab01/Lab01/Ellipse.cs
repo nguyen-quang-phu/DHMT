@@ -27,6 +27,7 @@ namespace Lab01
         public override void Draw(OpenGL gl)
         {
             gl.Color(LineColor.R, LineColor.G, LineColor.B);
+            gl.LineWidth(LineWidth);
             gl.Begin(OpenGL.GL_POINTS);
 
             int u, v;

@@ -23,15 +23,20 @@ namespace Lab01
         {
             base.set(A, B);
         }
+
+
         public override void Draw(OpenGL gl)
         {
-            Line li;
+            Line li = new Line();
             for (int i = 0; i < nPoly; i++)
             {
                 if (i == nPoly - 1)
                     li = new Line(nPoints[nPoly - 1], nPoints[0]);
                 else
                     li = new Line(nPoints[i], nPoints[i+1]);
+
+                li.LineColor = LineColor;
+                li.LineWidth = LineWidth;
                 li.Draw(gl);
             }
         }
