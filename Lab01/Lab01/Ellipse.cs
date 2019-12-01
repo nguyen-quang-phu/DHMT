@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Lab01
 {
-    class Ellipse : Object
+    class Ellipse : Shape
     {
         public override void set(Point A, Point B)
         {
@@ -15,6 +15,7 @@ namespace Lab01
             p2.setPoint(A.X > B.X ? A.X : B.X, A.Y > B.Y ? A.Y : B.Y);
         }
 
+        
         //Vẽ điểm ảnh với nét vẽ dày tùy chọn
         private void DrawPoint(OpenGL gl, int u, int v)
         {
@@ -109,4 +110,7 @@ namespace Lab01
             gl.End();
         }
     }
+
+
+        
 }

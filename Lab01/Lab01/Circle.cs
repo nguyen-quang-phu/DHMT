@@ -7,13 +7,9 @@ using System.Threading.Tasks;
 
 namespace Lab01
 {
-    class Circle : Object
+    class Circle : Ellipse
     {
-        public override void set(Point A, Point B)
-        {
-            p1.setPoint(A.X < B.X ? A.X : B.X, A.Y < B.Y ? A.Y : B.Y);
-            p2.setPoint(A.X > B.X ? A.X : B.X, A.Y > B.Y ? A.Y : B.Y);
-        }
+        
 
         //Vẽ điểm ảnh với nét vẽ dày tùy chọn
         private void DrawPoint(OpenGL gl, int u, int v)
