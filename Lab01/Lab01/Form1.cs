@@ -48,6 +48,14 @@ namespace Lab01
         {
             this.components = new System.ComponentModel.Container();
             this.openGLControl = new SharpGL.OpenGLControl();
+            this.label1 = new System.Windows.Forms.Label();
+            this.bt_LineColor = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lst_Width = new System.Windows.Forms.NumericUpDown();
+            this.lb_Time = new System.Windows.Forms.Label();
+            this.colorDialog = new System.Windows.Forms.ColorDialog();
+            this.timer_Drawing = new System.Windows.Forms.Timer(this.components);
+            this.btnSelect = new System.Windows.Forms.Button();
             this.btnEllipse = new System.Windows.Forms.Button();
             this.btnCircle = new System.Windows.Forms.Button();
             this.BtnHexagon = new System.Windows.Forms.Button();
@@ -56,14 +64,6 @@ namespace Lab01
             this.btnLine = new System.Windows.Forms.Button();
             this.btnTriangle = new System.Windows.Forms.Button();
             this.btnPolygon = new System.Windows.Forms.Button();
-            this.btnSelect = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.bt_LineColor = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lst_Width = new System.Windows.Forms.NumericUpDown();
-            this.lb_Time = new System.Windows.Forms.Label();
-            this.colorDialog = new System.Windows.Forms.ColorDialog();
-            this.timer_Drawing = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.openGLControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lst_Width)).BeginInit();
             this.SuspendLayout();
@@ -84,6 +84,79 @@ namespace Lab01
             this.openGLControl.MouseDown += new System.Windows.Forms.MouseEventHandler(this.openGLControl_MouseDown);
             this.openGLControl.MouseMove += new System.Windows.Forms.MouseEventHandler(this.openGLControl_MouseMove);
             this.openGLControl.MouseUp += new System.Windows.Forms.MouseEventHandler(this.openGLControl_MouseUp);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(699, 95);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(54, 13);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Line Color";
+            // 
+            // bt_LineColor
+            // 
+            this.bt_LineColor.BackColor = System.Drawing.SystemColors.ControlText;
+            this.bt_LineColor.Location = new System.Drawing.Point(702, 111);
+            this.bt_LineColor.Name = "bt_LineColor";
+            this.bt_LineColor.Size = new System.Drawing.Size(65, 24);
+            this.bt_LineColor.TabIndex = 18;
+            this.bt_LineColor.UseVisualStyleBackColor = false;
+            this.bt_LineColor.Click += new System.EventHandler(this.bt_LineColor_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(699, 158);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(58, 13);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "Line Width";
+            // 
+            // lst_Width
+            // 
+            this.lst_Width.Location = new System.Drawing.Point(702, 174);
+            this.lst_Width.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.lst_Width.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.lst_Width.Name = "lst_Width";
+            this.lst_Width.Size = new System.Drawing.Size(65, 20);
+            this.lst_Width.TabIndex = 20;
+            this.lst_Width.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.lst_Width.ValueChanged += new System.EventHandler(this.lst_Width_ValueChanged);
+            // 
+            // lb_Time
+            // 
+            this.lb_Time.AutoSize = true;
+            this.lb_Time.Location = new System.Drawing.Point(699, 491);
+            this.lb_Time.Name = "lb_Time";
+            this.lb_Time.Size = new System.Drawing.Size(37, 13);
+            this.lb_Time.TabIndex = 21;
+            this.lb_Time.Text = "0:00.0";
+            // 
+            // btnSelect
+            // 
+            this.btnSelect.Image = global::Lab01.Properties.Resources.Line1;
+            this.btnSelect.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSelect.Location = new System.Drawing.Point(677, 27);
+            this.btnSelect.Name = "btnSelect";
+            this.btnSelect.Size = new System.Drawing.Size(76, 31);
+            this.btnSelect.TabIndex = 16;
+            this.btnSelect.Text = "Select";
+            this.btnSelect.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSelect.UseVisualStyleBackColor = true;
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
             // btnEllipse
             // 
@@ -179,7 +252,7 @@ namespace Lab01
             // 
             // btnPolygon
             // 
-            this.btnPolygon.Image = global::Lab01.Properties.Resources.Hexagon;
+            this.btnPolygon.Image = global::Lab01.Properties.Resources.Polygon;
             this.btnPolygon.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPolygon.Location = new System.Drawing.Point(588, 27);
             this.btnPolygon.Name = "btnPolygon";
@@ -189,79 +262,6 @@ namespace Lab01
             this.btnPolygon.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPolygon.UseVisualStyleBackColor = true;
             this.btnPolygon.Click += new System.EventHandler(this.btnPolygon_Click);
-            // 
-            // btnSelect
-            // 
-            this.btnSelect.Image = global::Lab01.Properties.Resources.Line1;
-            this.btnSelect.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSelect.Location = new System.Drawing.Point(677, 27);
-            this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(76, 31);
-            this.btnSelect.TabIndex = 16;
-            this.btnSelect.Text = "Select";
-            this.btnSelect.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSelect.UseVisualStyleBackColor = true;
-            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(699, 95);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 13);
-            this.label1.TabIndex = 17;
-            this.label1.Text = "Line Color";
-            // 
-            // bt_LineColor
-            // 
-            this.bt_LineColor.BackColor = System.Drawing.SystemColors.ControlText;
-            this.bt_LineColor.Location = new System.Drawing.Point(702, 111);
-            this.bt_LineColor.Name = "bt_LineColor";
-            this.bt_LineColor.Size = new System.Drawing.Size(65, 24);
-            this.bt_LineColor.TabIndex = 18;
-            this.bt_LineColor.UseVisualStyleBackColor = false;
-            this.bt_LineColor.Click += new System.EventHandler(this.bt_LineColor_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(699, 158);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 13);
-            this.label2.TabIndex = 19;
-            this.label2.Text = "Line Width";
-            // 
-            // lst_Width
-            // 
-            this.lst_Width.Location = new System.Drawing.Point(702, 174);
-            this.lst_Width.Maximum = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            this.lst_Width.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.lst_Width.Name = "lst_Width";
-            this.lst_Width.Size = new System.Drawing.Size(65, 20);
-            this.lst_Width.TabIndex = 20;
-            this.lst_Width.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.lst_Width.ValueChanged += new System.EventHandler(this.lst_Width_ValueChanged);
-            // 
-            // lb_Time
-            // 
-            this.lb_Time.AutoSize = true;
-            this.lb_Time.Location = new System.Drawing.Point(699, 491);
-            this.lb_Time.Name = "lb_Time";
-            this.lb_Time.Size = new System.Drawing.Size(37, 13);
-            this.lb_Time.TabIndex = 21;
-            this.lb_Time.Text = "0:00.0";
             // 
             // Lab01
             // 
