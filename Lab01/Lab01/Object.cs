@@ -11,6 +11,7 @@ namespace Lab01
     {
         public Color LineColor { get; set; } = new Color();
         public Color FillColor { get; set; } = new Color();
+        public double Angle { get; set; } = 0.0;
         //Độ dày viền
         public int LineWidth { get; set; } = 1;
         //Điểm chặn trên trái

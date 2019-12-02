@@ -524,7 +524,7 @@ namespace Lab01
                 currentShape.Draw(gl);
             }
 
-            if (currentMode == Mode.Select)
+            else if (currentMode == Mode.Select)
             {
                 if (objectId >= 0)
                 {
