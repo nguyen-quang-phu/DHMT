@@ -71,6 +71,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rectangle.cs" />
+    <Compile Include="ScanFill.cs" />
     <Compile Include="Shape.cs" />
     <Compile Include="Triangle.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -125,6 +126,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Polygon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Select.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fill.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

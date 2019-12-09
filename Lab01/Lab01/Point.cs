@@ -25,5 +25,7 @@ namespace Lab01
             X = c.X;
             Y = c.Y;
         }
+        public int getX() { return X; }
+        public int getY() { return Y; }
     }
 }

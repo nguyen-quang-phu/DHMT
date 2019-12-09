@@ -34,6 +34,7 @@ C:\Users\buihu\Downloads\CLASS\ĐHMT\DHMT\Lab01\Lab01\obj\Debug\Lab01.csproj.Cor
 C:\Users\buihu\Downloads\CLASS\ĐHMT\DHMT\Lab01\Lab01\obj\Debug\Lab01.csproj.CopyComplete
 C:\Users\buihu\Downloads\CLASS\ĐHMT\DHMT\Lab01\Lab01\obj\Debug\Lab01.exe
 C:\Users\buihu\Downloads\CLASS\ĐHMT\DHMT\Lab01\Lab01\obj\Debug\Lab01.pdb
+<<<<<<< HEAD
 D:\STUDY\Computer Graphic\Lab02\DHMT\Lab01\Lab01\bin\Debug\Lab01.exe.config
 D:\STUDY\Computer Graphic\Lab02\DHMT\Lab01\Lab01\bin\Debug\Lab01.exe
 D:\STUDY\Computer Graphic\Lab02\DHMT\Lab01\Lab01\bin\Debug\Lab01.pdb
@@ -52,3 +53,23 @@ D:\STUDY\Computer Graphic\Lab02\DHMT\Lab01\Lab01\obj\Debug\Lab01.csproj.CoreComp
 D:\STUDY\Computer Graphic\Lab02\DHMT\Lab01\Lab01\obj\Debug\Lab01.csproj.CopyComplete
 D:\STUDY\Computer Graphic\Lab02\DHMT\Lab01\Lab01\obj\Debug\Lab01.exe
 D:\STUDY\Computer Graphic\Lab02\DHMT\Lab01\Lab01\obj\Debug\Lab01.pdb
+=======
+C:\Users\ADMIN\Desktop\LabDHMT\DHMT\Lab01\Lab01\bin\Debug\Lab01.exe.config
+C:\Users\ADMIN\Desktop\LabDHMT\DHMT\Lab01\Lab01\obj\Debug\Lab01.exe
+C:\Users\ADMIN\Desktop\LabDHMT\DHMT\Lab01\Lab01\obj\Debug\Lab01.pdb
+C:\Users\ADMIN\Desktop\LabDHMT\DHMT\Lab01\Lab01\obj\Debug\Lab01.csprojResolveAssemblyReference.cache
+C:\Users\ADMIN\Desktop\LabDHMT\DHMT\Lab01\Lab01\obj\Debug\Lab01.Lab01.resources
+C:\Users\ADMIN\Desktop\LabDHMT\DHMT\Lab01\Lab01\obj\Debug\Lab01.Properties.Resources.resources
+C:\Users\ADMIN\Desktop\LabDHMT\DHMT\Lab01\Lab01\obj\Debug\Lab01.csproj.GenerateResource.Cache
+C:\Users\ADMIN\Desktop\LabDHMT\DHMT\Lab01\Lab01\bin\Debug\Lab01.exe
+C:\Users\ADMIN\Desktop\LabDHMT\DHMT\Lab01\Lab01\bin\Debug\Lab01.pdb
+C:\Users\ADMIN\Desktop\LabDHMT\DHMT\Lab01\Lab01\bin\Debug\SharpGL.dll
+C:\Users\ADMIN\Desktop\LabDHMT\DHMT\Lab01\Lab01\bin\Debug\SharpGL.WinForms.dll
+C:\Users\ADMIN\Desktop\LabDHMT\DHMT\Lab01\Lab01\bin\Debug\SharpGL.SceneGraph.dll
+C:\Users\ADMIN\Desktop\LabDHMT\DHMT\Lab01\Lab01\bin\Debug\SharpGL.pdb
+C:\Users\ADMIN\Desktop\LabDHMT\DHMT\Lab01\Lab01\bin\Debug\SharpGL.xml
+C:\Users\ADMIN\Desktop\LabDHMT\DHMT\Lab01\Lab01\bin\Debug\SharpGL.WinForms.pdb
+C:\Users\ADMIN\Desktop\LabDHMT\DHMT\Lab01\Lab01\bin\Debug\SharpGL.WinForms.xml
+C:\Users\ADMIN\Desktop\LabDHMT\DHMT\Lab01\Lab01\bin\Debug\SharpGL.SceneGraph.pdb
+C:\Users\ADMIN\Desktop\LabDHMT\DHMT\Lab01\Lab01\bin\Debug\SharpGL.SceneGraph.xml
+>>>>>>> 2035cbd4be0b98ac5b6ccef5f3c8e9f86c832dc2

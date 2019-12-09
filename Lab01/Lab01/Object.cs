@@ -28,7 +28,7 @@ namespace Lab01
         public virtual bool isInsideBox(int x, int y) { return false; }
         //Xác định điểm điều khiển được chọn
         public virtual int getControlPointId(int x, int y) { return -1; }
-
+        public virtual void Fill(OpenGL gl, bool mode) { }
         //Tịnh tiến hình
         public virtual void translate(Point s, Point e) { }
         //Co giản hình qua điểm điều khiển

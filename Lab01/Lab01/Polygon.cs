@@ -45,6 +45,25 @@ namespace Lab01
             {
                 base.Fill(gl, mode);
             }
+<<<<<<< HEAD
         }
+=======
+            else //scanline
+            {
+                if (nPoly < 3) return;
+                ScanFill fillPolygon = new ScanFill();
+                List<Point> p = new List<Point>();
+                for (int i = 0; i < nPoly; i++)
+                {
+                    p.Add(nPoints[i]);
+                }
+                gl.Color(FillColor.getR(), FillColor.getG(), FillColor.getB());
+                fillPolygon.setFill(p);
+                fillPolygon.initEdges();
+                fillPolygon.scanlineFill(gl);
+            }
+        }
+
+>>>>>>> 2035cbd4be0b98ac5b6ccef5f3c8e9f86c832dc2
     }
 }

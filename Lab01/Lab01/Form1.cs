@@ -23,10 +23,15 @@ namespace Lab01
 
         enum Mode { Line, Circle, Rectangle, Ellipse, Triangle, Pentagon, Hexagon, Polygon, Select }; //Các chế độ vẽ hình
         Mode currentMode = Mode.Line;   //Chế độ hiện tại
+<<<<<<< HEAD
         Color currentLineColor = new Color();   //Màu viền hiện tại
         Color currentFillColor = new Color();   //Màu nền hiện tại
         bool currentModeFill = false; // Nếu true là flood fill, nếu false là scanline fill
 
+=======
+        Color currentLineColor = new Color(),  //Màu viền hiện tại            
+        currentFillColor = new Color(1f, 1f, 1f);
+>>>>>>> 2035cbd4be0b98ac5b6ccef5f3c8e9f86c832dc2
         bool isDrawing = false; //Đang nhấn chuột để vẽ hình mới   
 
         Point pStart = new Point(), //Điểm chăn khởi đầu lúc nhấn chuột
@@ -42,7 +47,12 @@ namespace Lab01
             gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT);
             //Vẽ lại các hình
             foreach (Object s in shapes)
+            {
                 s.Draw(gl);
+                s.Fill(gl, false);
+                s.Draw(gl);
+            }
+                
             gl.Flush();
 
         }
@@ -57,6 +67,8 @@ namespace Lab01
             this.lb_Time = new System.Windows.Forms.Label();
             this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.timer_Drawing = new System.Windows.Forms.Timer(this.components);
+            this.btnFillColor = new System.Windows.Forms.Button();
+            this.btnFill = new System.Windows.Forms.Button();
             this.btnSelect = new System.Windows.Forms.Button();
             this.btnEllipse = new System.Windows.Forms.Button();
             this.btnCircle = new System.Windows.Forms.Button();
@@ -66,8 +78,12 @@ namespace Lab01
             this.btnLine = new System.Windows.Forms.Button();
             this.btnTriangle = new System.Windows.Forms.Button();
             this.btnPolygon = new System.Windows.Forms.Button();
+<<<<<<< HEAD
             this.lb_FillColor = new System.Windows.Forms.Label();
             this.bt_FillColor = new System.Windows.Forms.Button();
+=======
+            this.label3 = new System.Windows.Forms.Label();
+>>>>>>> 2035cbd4be0b98ac5b6ccef5f3c8e9f86c832dc2
             ((System.ComponentModel.ISupportInitialize)(this.openGLControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lst_Width)).BeginInit();
             this.SuspendLayout();
@@ -91,17 +107,26 @@ namespace Lab01
             // 
             // lb_LineColor
             // 
+<<<<<<< HEAD
             this.lb_LineColor.AutoSize = true;
             this.lb_LineColor.Location = new System.Drawing.Point(699, 95);
             this.lb_LineColor.Name = "lb_LineColor";
             this.lb_LineColor.Size = new System.Drawing.Size(54, 13);
             this.lb_LineColor.TabIndex = 17;
             this.lb_LineColor.Text = "Line Color";
+=======
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(682, 104);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(54, 13);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Line Color";
+>>>>>>> 2035cbd4be0b98ac5b6ccef5f3c8e9f86c832dc2
             // 
             // bt_LineColor
             // 
             this.bt_LineColor.BackColor = System.Drawing.SystemColors.ControlText;
-            this.bt_LineColor.Location = new System.Drawing.Point(702, 111);
+            this.bt_LineColor.Location = new System.Drawing.Point(677, 120);
             this.bt_LineColor.Name = "bt_LineColor";
             this.bt_LineColor.Size = new System.Drawing.Size(65, 24);
             this.bt_LineColor.TabIndex = 18;
@@ -111,7 +136,7 @@ namespace Lab01
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(699, 158);
+            this.label2.Location = new System.Drawing.Point(682, 147);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 13);
             this.label2.TabIndex = 19;
@@ -119,7 +144,7 @@ namespace Lab01
             // 
             // lst_Width
             // 
-            this.lst_Width.Location = new System.Drawing.Point(702, 174);
+            this.lst_Width.Location = new System.Drawing.Point(679, 175);
             this.lst_Width.Maximum = new decimal(new int[] {
             20,
             0,
@@ -149,13 +174,37 @@ namespace Lab01
             this.lb_Time.TabIndex = 21;
             this.lb_Time.Text = "0:00.0";
             // 
+            // btnFillColor
+            // 
+            this.btnFillColor.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnFillColor.Location = new System.Drawing.Point(679, 242);
+            this.btnFillColor.Name = "btnFillColor";
+            this.btnFillColor.Size = new System.Drawing.Size(63, 25);
+            this.btnFillColor.TabIndex = 22;
+            this.btnFillColor.UseVisualStyleBackColor = false;
+            this.btnFillColor.Click += new System.EventHandler(this.btnFillColor_Click);
+            
+            // 
+            // btnFill
+            // 
+            this.btnFill.Image = global::Lab01.Properties.Resources.Fill;
+            this.btnFill.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFill.Location = new System.Drawing.Point(679, 67);
+            this.btnFill.Name = "btnFill";
+            this.btnFill.Size = new System.Drawing.Size(57, 28);
+            this.btnFill.TabIndex = 23;
+            this.btnFill.Text = "Fill";
+            this.btnFill.UseVisualStyleBackColor = true;
+            this.btnFill.Click += new System.EventHandler(this.btnFill_Click);
+            this.btnFill.Enabled = false;
+            // 
             // btnSelect
             // 
-            this.btnSelect.Image = global::Lab01.Properties.Resources.Line1;
+            this.btnSelect.Image = global::Lab01.Properties.Resources.Select;
             this.btnSelect.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSelect.Location = new System.Drawing.Point(677, 27);
             this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(76, 31);
+            this.btnSelect.Size = new System.Drawing.Size(59, 31);
             this.btnSelect.TabIndex = 16;
             this.btnSelect.Text = "Select";
             this.btnSelect.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -267,6 +316,7 @@ namespace Lab01
             this.btnPolygon.UseVisualStyleBackColor = true;
             this.btnPolygon.Click += new System.EventHandler(this.btnPolygon_Click);
             // 
+<<<<<<< HEAD
             // lb_FillColor
             // 
             this.lb_FillColor.AutoSize = true;
@@ -286,12 +336,28 @@ namespace Lab01
             this.bt_FillColor.TabIndex = 23;
             this.bt_FillColor.UseVisualStyleBackColor = false;
             this.bt_FillColor.Click += new System.EventHandler(this.bt_FillColor_Click);
+=======
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(677, 215);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(46, 13);
+            this.label3.TabIndex = 24;
+            this.label3.Text = "Fill Color";
+>>>>>>> 2035cbd4be0b98ac5b6ccef5f3c8e9f86c832dc2
             // 
             // Lab01
             // 
             this.ClientSize = new System.Drawing.Size(780, 516);
+<<<<<<< HEAD
             this.Controls.Add(this.bt_FillColor);
             this.Controls.Add(this.lb_FillColor);
+=======
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.btnFill);
+            this.Controls.Add(this.btnFillColor);
+>>>>>>> 2035cbd4be0b98ac5b6ccef5f3c8e9f86c832dc2
             this.Controls.Add(this.lb_Time);
             this.Controls.Add(this.lst_Width);
             this.Controls.Add(this.label2);
@@ -334,6 +400,7 @@ namespace Lab01
             btnPolygon.Enabled = true;
             btnSelect.Enabled = true;
             currentMode = Mode.Line;
+            btnFill.Enabled = false;
         }
 
         private void btnCircle_Click(object sender, EventArgs e)
@@ -348,6 +415,7 @@ namespace Lab01
             btnPolygon.Enabled = true;
             btnSelect.Enabled = true;
             currentMode = Mode.Circle;
+            btnFill.Enabled = false;
         }
 
         private void btnRectangle_Click(object sender, EventArgs e)
@@ -362,6 +430,7 @@ namespace Lab01
             btnPolygon.Enabled = true;
             btnSelect.Enabled = true;
             currentMode = Mode.Rectangle;
+            btnFill.Enabled = false;
         }
 
         private void btnEllipse_Click(object sender, EventArgs e)
@@ -376,6 +445,7 @@ namespace Lab01
             btnPolygon.Enabled = true;
             btnSelect.Enabled = true;
             currentMode = Mode.Ellipse;
+            btnFill.Enabled = false;
         }
 
         private void btnTriangle_Click(object sender, EventArgs e)
@@ -390,6 +460,7 @@ namespace Lab01
             btnPolygon.Enabled = true;
             btnSelect.Enabled = true;
             currentMode = Mode.Triangle;
+            btnFill.Enabled = false;
         }
 
         private void btnPentagon_Click(object sender, EventArgs e)
@@ -404,6 +475,7 @@ namespace Lab01
             btnPolygon.Enabled = true;
             btnSelect.Enabled = true;
             currentMode = Mode.Pentagon;
+            btnFill.Enabled = false;
         }
 
         private void BtnHexagon_Click(object sender, EventArgs e)
@@ -418,6 +490,7 @@ namespace Lab01
             btnPolygon.Enabled = true;
             btnSelect.Enabled = true;
             currentMode = Mode.Hexagon;
+            btnFill.Enabled = false;
         }
 
         private void btnPolygon_Click(object sender, EventArgs e)
@@ -432,6 +505,7 @@ namespace Lab01
             btnPolygon.Enabled = false;
             btnSelect.Enabled = true;
             currentMode = Mode.Polygon;
+            btnFill.Enabled = false;
         }
 
         private void btnSelect_Click(object sender, EventArgs e)
@@ -446,6 +520,7 @@ namespace Lab01
             btnPolygon.Enabled = true;
             btnSelect.Enabled = false;
             currentMode = Mode.Select;
+            btnFill.Enabled = true;
         }
 
         private void openGLControl_MouseDown(object sender, MouseEventArgs e)
@@ -463,9 +538,11 @@ namespace Lab01
                     currentShape.LineColor = currentLineColor;
                     currentShape.FillColor = currentFillColor;
                     currentShape.LineWidth = (int)lst_Width.Value;
+                    currentShape.FillColor = currentFillColor;
                     isDrawing = true;
                     timer_Drawing.Start();
                     timeDrawing = 0;
+
                 }
                 return;
             }
@@ -538,6 +615,7 @@ namespace Lab01
             }
             currentShape.LineColor = currentLineColor;
             currentShape.LineWidth = (int)lst_Width.Value;
+            currentShape.FillColor = currentFillColor;
         }
 
         private void openGLControl_MouseMove(object sender, MouseEventArgs e)
@@ -668,6 +746,7 @@ namespace Lab01
 
         }
 
+<<<<<<< HEAD
         private void bt_FillColor_Click(object sender, EventArgs e)
         {
             //Chọn màu nền
@@ -676,6 +755,24 @@ namespace Lab01
                 currentFillColor = new Color(colorDialog.Color.R / 255.0f, colorDialog.Color.G / 255.0f, colorDialog.Color.B / 255.0f);
                 bt_FillColor.BackColor = colorDialog.Color;
                
+=======
+        private void btnFill_Click(object sender, EventArgs e)
+        {
+            if (currentMode == Mode.Select && objectId >= 0)
+            {
+                shapes[objectId].FillColor = currentFillColor;
+                renderShapes();
+                // shapes[chosenShapeId].drawControlBox(gl);                  
+            }
+        }
+
+        private void btnFillColor_Click(object sender, EventArgs e)
+        {
+            if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                currentFillColor = new Color(colorDialog.Color.R / 255.0f, colorDialog.Color.G / 255.0f, colorDialog.Color.B / 255.0f);
+                btnFillColor.BackColor = colorDialog.Color;
+>>>>>>> 2035cbd4be0b98ac5b6ccef5f3c8e9f86c832dc2
             }
         }
 
