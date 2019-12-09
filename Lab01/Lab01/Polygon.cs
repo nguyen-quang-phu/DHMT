@@ -39,6 +39,12 @@ namespace Lab01
                 li.Draw(gl);
             }
         }
-
+        public override void Fill(OpenGL gl, bool mode)
+        {
+            if (mode)
+            {
+                base.Fill(gl, mode);
+            }
+        }
     }
 }

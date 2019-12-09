@@ -37,13 +37,15 @@
         private System.Windows.Forms.Button btnEllipse;
         private System.Windows.Forms.Button btnPolygon;
         private System.Windows.Forms.Button btnSelect;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lb_LineColor;
         private System.Windows.Forms.Button bt_LineColor;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown lst_Width;
         private System.Windows.Forms.Label lb_Time;
         private System.Windows.Forms.ColorDialog colorDialog;
         private System.Windows.Forms.Timer timer_Drawing;
+        private System.Windows.Forms.Label lb_FillColor;
+        private System.Windows.Forms.Button bt_FillColor;
     }
 }
 

@@ -35,5 +35,7 @@ namespace Lab01
         public virtual void dragControlPoint(int CPid, Point s, Point e) { }
         //Vẽ các điểm điều khiển
         public virtual void drawControlBox(OpenGL gl) { }
+        //Tô màu, nếu mode là true thì flood fill ngược lại là scanline fill
+        public virtual void Fill(OpenGL gl, bool mode) { }
     }
 }

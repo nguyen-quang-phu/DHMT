@@ -30,5 +30,16 @@ namespace Lab01
             G = g;
             B = b;
         }
+
+        public static bool operator ==(Color color1, Color color2)
+        {
+            float e = 1.0f / 10000000.0f;
+            return (Math.Abs(color1.R - color2.R) < e && Math.Abs(color1.G - color2.G) < e && Math.Abs(color1.B - color2.B) < e);
+        }
+        
+        public static bool operator !=(Color color1, Color color2)
+        {
+            return !(color1 == color2);
+        }
     }
 }

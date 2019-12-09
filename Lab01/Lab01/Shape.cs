@@ -223,5 +223,47 @@ namespace Lab01
             p2.X += vx;
             p2.Y += vy;
         }
+
+        private Color getPixelColor(OpenGL gl, int x, int y) //Lấy màu của pixel (x,y)
+        {
+            Color color = new Color();
+            byte[] pixels = new byte[4];
+            gl.ReadPixels(x, y, 2, 2, OpenGL.GL_RGB, OpenGL.GL_UNSIGNED_BYTE, pixels);
+            color.setColor(pixels[0] / 255.0f, pixels[1] / 255.0f, pixels[2] / 255.0f);
+            return color;
+        }
+
+        private void setPixelColor(OpenGL gl, int x, int y, Color color) //Set màu cho pixel (x,y)
+        {
+            gl.Color(color.R, color.G, color.B);
+            gl.Begin(OpenGL.GL_POINTS);
+            gl.Vertex(x, y);
+            gl.End();
+            gl.Flush();
+        }
+
+        private void floodFill(OpenGL gl, int x, int y, Color oldColor)
+        {
+            Color color = new Color(getPixelColor(gl, x, y));
+            if (color == oldColor)
+            {
+                setPixelColor(gl, x, y, FillColor);
+                floodFill(gl, x + 1, y, oldColor);
+                floodFill(gl, x - 1, y, oldColor);
+                floodFill(gl, x, y + 1, oldColor);
+                floodFill(gl, x, y - 1, oldColor);
+            }
+        }
+
+        public override void Fill(OpenGL gl, bool mode)
+        {
+            if(mode == true)
+            {
+                int cx = (p1.X + p2.X) / 2,
+                    cy = (p1.Y + p2.Y) / 2;
+                Color oldColor = getPixelColor(gl, cx, cy);
+                floodFill(gl, cx, cy, oldColor);
+            }
+        }
     }
 }
