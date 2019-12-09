@@ -30,5 +30,8 @@ namespace Lab01
             G = g;
             B = b;
         }
+        public float getR() { return R; }
+        public float getG() { return G; }
+        public float getB() { return B; }
     }
 }

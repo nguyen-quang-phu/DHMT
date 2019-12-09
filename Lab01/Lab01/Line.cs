@@ -20,8 +20,14 @@ namespace Lab01
             p1.setPoint(A.X, A.Y);
             p2.setPoint(B.X, B.Y);
         }
-        
-
+        public Point getP1()
+        {
+            return p1;
+        }
+        public Point getP2()
+        {
+            return p2;
+        }
         public override bool isInsideBox(int x, int y)
         {
             if (Math.Abs(y - p1.Y) <= 2.0 && Math.Abs(p2.Y - p1.Y) <= 2.0)

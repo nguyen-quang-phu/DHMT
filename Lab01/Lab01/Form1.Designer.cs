@@ -44,6 +44,9 @@
         private System.Windows.Forms.Label lb_Time;
         private System.Windows.Forms.ColorDialog colorDialog;
         private System.Windows.Forms.Timer timer_Drawing;
+        private System.Windows.Forms.Button btnFillColor;
+        private System.Windows.Forms.Button btnFill;
+        private System.Windows.Forms.Label label3;
     }
 }
 

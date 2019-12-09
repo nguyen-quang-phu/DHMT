@@ -39,6 +39,27 @@ namespace Lab01
                 li.Draw(gl);
             }
         }
+        public override void Fill(OpenGL gl, bool mode)
+        {
+            if (mode)
+            {
+                base.Fill(gl, mode);
+            }
+            else //scanline
+            {
+                if (nPoly < 3) return;
+                ScanFill fillPolygon = new ScanFill();
+                List<Point> p = new List<Point>();
+                for (int i = 0; i < nPoly; i++)
+                {
+                    p.Add(nPoints[i]);
+                }
+                gl.Color(FillColor.getR(), FillColor.getG(), FillColor.getB());
+                fillPolygon.setFill(p);
+                fillPolygon.initEdges();
+                fillPolygon.scanlineFill(gl);
+            }
+        }
 
     }
 }
