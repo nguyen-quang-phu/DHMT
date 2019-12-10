@@ -156,6 +156,10 @@ namespace Lab01
             this.lb_Time.TabIndex = 21;
             this.lb_Time.Text = "0:00.0";
             // 
+            // timer_Drawing
+            // 
+            this.timer_Drawing.Tick += new System.EventHandler(this.timer_Drawing_Tick);
+            // 
             // btnFillColor
             // 
             this.btnFillColor.BackColor = System.Drawing.SystemColors.ControlLightLight;
@@ -165,10 +169,10 @@ namespace Lab01
             this.btnFillColor.TabIndex = 22;
             this.btnFillColor.UseVisualStyleBackColor = false;
             this.btnFillColor.Click += new System.EventHandler(this.btnFillColor_Click);
-            
             // 
             // btnFill
             // 
+            this.btnFill.Enabled = false;
             this.btnFill.Image = global::Lab01.Properties.Resources.Fill;
             this.btnFill.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFill.Location = new System.Drawing.Point(679, 67);
@@ -178,7 +182,6 @@ namespace Lab01
             this.btnFill.Text = "Fill";
             this.btnFill.UseVisualStyleBackColor = true;
             this.btnFill.Click += new System.EventHandler(this.btnFill_Click);
-            this.btnFill.Enabled = false;
             // 
             // btnSelect
             // 
@@ -307,18 +310,20 @@ namespace Lab01
             this.lb_FillColor.TabIndex = 22;
             this.lb_FillColor.Text = "Fill Color";
             // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(0, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(100, 23);
+            this.label3.TabIndex = 23;
             // 
             // Lab01
             // 
             this.ClientSize = new System.Drawing.Size(780, 516);
-
-
             this.Controls.Add(this.lb_FillColor);
-
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnFill);
             this.Controls.Add(this.btnFillColor);
-
             this.Controls.Add(this.lb_Time);
             this.Controls.Add(this.lst_Width);
             this.Controls.Add(this.label2);
@@ -549,7 +554,8 @@ namespace Lab01
 
                 return;
             }
-
+            timer_Drawing.Start();
+            timeDrawing = 0;
             switch (currentMode)
             {
                 case Mode.Line:
@@ -723,6 +729,7 @@ namespace Lab01
                 btnFillColor.BackColor = colorDialog.Color;
             }
         }
+
 
         private void openGLControl_Load(object sender, EventArgs e)
         {
