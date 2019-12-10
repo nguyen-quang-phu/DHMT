@@ -30,7 +30,6 @@ namespace Lab01
             G = g;
             B = b;
         }
-<<<<<<< HEAD
 
         public static bool operator ==(Color color1, Color color2)
         {
@@ -42,10 +41,8 @@ namespace Lab01
         {
             return !(color1 == color2);
         }
-=======
         public float getR() { return R; }
         public float getG() { return G; }
         public float getB() { return B; }
->>>>>>> 2035cbd4be0b98ac5b6ccef5f3c8e9f86c832dc2
     }
 }

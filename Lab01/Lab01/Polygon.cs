@@ -9,7 +9,7 @@ namespace Lab01
 {
     class Polygon : Shape
     {
-        public int nPoly;
+        public int nPoly=0;
         public Point[] nPoints;
 
         protected void init()
@@ -45,9 +45,6 @@ namespace Lab01
             {
                 base.Fill(gl, mode);
             }
-<<<<<<< HEAD
-        }
-=======
             else //scanline
             {
                 if (nPoly < 3) return;
@@ -64,6 +61,5 @@ namespace Lab01
             }
         }
 
->>>>>>> 2035cbd4be0b98ac5b6ccef5f3c8e9f86c832dc2
     }
 }
