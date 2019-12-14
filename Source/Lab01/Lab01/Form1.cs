@@ -20,7 +20,7 @@ namespace Lab01
         int Selected = -1;  // có được chọn hay k
         int objectId = -1;  //Hình đang được chọn
         int chosenControlPointId = -1;  // điểm điều khiển được chọn
-
+        int line_width = 1;
         enum Mode { Line, Circle, Rectangle, Ellipse, Triangle, Pentagon, Hexagon, Polygon, Select }; //Các chế độ vẽ hình
         Mode currentMode = Mode.Line;   //Chế độ hiện tại
         Color currentLineColor = new Color();   //Màu viền hiện tại
@@ -709,7 +709,7 @@ namespace Lab01
 
         private void lst_Width_ValueChanged(object sender, EventArgs e)
         {
-
+            line_width = (int)lst_Width.Value;
         }
 
         private void btnFill_Click(object sender, EventArgs e)

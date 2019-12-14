@@ -29,6 +29,8 @@ namespace Lab01
         public override void Draw(OpenGL gl)
         {
             Line li = new Line();
+            li.LineWidth = LineWidth;
+            li.LineColor = LineColor;
             int cx = (p1.X + p2.X) / 2, cy = (p1.Y + p2.Y) / 2;
             gl.PushMatrix();
             gl.Translate(cx, cy, 0.0);
