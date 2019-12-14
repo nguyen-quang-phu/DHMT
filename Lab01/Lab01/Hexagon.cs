@@ -17,25 +17,17 @@ namespace Lab01
         public override void set(Point pi, Point pj)
         {
             base.set(pi, pj);
-            //if (equilateral)
-            //{
-            //    p2.Y = p1.Y + (p2.X - p1.X);
-            //}
-            p2.Y = p1.Y + (p2.X - p1.X);
-            int xc = (p1.X + p2.X) / 2,
-                yc = (p1.Y + p2.Y) / 2,
-                rx = xc - p1.X,
-                ry = yc - p1.Y;
+            p2r.Y = p2.Y = p1.Y + (int)Math.Round((p2.X - p1.X) * Math.Sqrt(3) / 2.0);
+            int rx = Math.Abs(p1.X - p2.X) / 2, ry = Math.Abs(p1.Y - p2.Y) / 2;
+            int dx = rx / 2;
 
-            int dx = (int)Math.Round(rx / 2.0),
-                dy = (int)Math.Round(ry * Math.Sqrt(3) / 2.0);
+            nPoints[0].setPoint(-dx, ry);
+            nPoints[1].setPoint(dx, ry);
+            nPoints[2].setPoint(rx, 0);
+            nPoints[3].setPoint(dx, -ry);
+            nPoints[4].setPoint(-dx, -ry);
+            nPoints[5].setPoint(-rx, 0);
 
-            nPoints[0].setPoint(xc - dx, yc + dy);
-            nPoints[1].setPoint(xc + dx, yc + dy);
-            nPoints[2].setPoint(xc + rx, yc);
-            nPoints[3].setPoint(xc + dx, yc - dy);
-            nPoints[4].setPoint(xc - dx, yc - dy);
-            nPoints[5].setPoint(xc - rx, yc);
         }
     }
 }

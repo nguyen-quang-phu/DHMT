@@ -115,8 +115,8 @@ namespace Lab01
 
                     gl.Begin(OpenGL.GL_LINES);
                     gl.LineWidth(1);
-                    gl.Vertex2sv(new short[] { (short)ListOfIntersectPoints[j - 1].getX(), (short)ListOfIntersectPoints[j - 1].getY() });
-                    gl.Vertex2sv(new short[] { (short)ListOfIntersectPoints[j].getX(), (short)ListOfIntersectPoints[j].getY() });
+                    gl.Vertex2sv(new short[] { (short)(ListOfIntersectPoints[j - 1].getX()), (short)ListOfIntersectPoints[j - 1].getY() });
+                    gl.Vertex2sv(new short[] { (short)(ListOfIntersectPoints[j].getX()), (short)ListOfIntersectPoints[j].getY() });
                     gl.End();
 
                 }

@@ -15,3 +15,4 @@ C:\Users\ADMIN\Desktop\LabDHMT\DHMT\Lab01\Lab01\obj\Debug\Lab01.Properties.Resou
 C:\Users\ADMIN\Desktop\LabDHMT\DHMT\Lab01\Lab01\obj\Debug\Lab01.csproj.GenerateResource.Cache
 C:\Users\ADMIN\Desktop\LabDHMT\DHMT\Lab01\Lab01\obj\Debug\Lab01.exe
 C:\Users\ADMIN\Desktop\LabDHMT\DHMT\Lab01\Lab01\obj\Debug\Lab01.pdb
+C:\Users\ADMIN\Desktop\LabDHMT\DHMT\Lab01\Lab01\obj\Debug\Lab01.csprojResolveAssemblyReference.cache

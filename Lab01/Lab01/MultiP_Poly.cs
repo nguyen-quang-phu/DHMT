@@ -66,10 +66,11 @@ namespace Lab01
                 if (vertexes[i].Y > y2) y2 = vertexes[i].Y;
             }
             p.set(new Point(x1, y1), new Point(x2, y2));
-
+            int xc = (x1 + x2) / 2,
+                yc = (y1 + y2) / 2;
             for (int i = 0; i < nPoly; i++)
             {
-                p.nPoints[i] = new Point(vertexes[i].X, vertexes[i].Y);
+                p.nPoints[i] = new Point(vertexes[i].X - xc, vertexes[i].Y-yc);
             }
 
             return p;

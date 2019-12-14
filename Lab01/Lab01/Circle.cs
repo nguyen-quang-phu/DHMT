@@ -103,5 +103,9 @@ namespace Lab01
             }
             gl.End();
         }
+        //public override void Fill(OpenGL gl, bool mode)
+        //{
+            
+        //}
     }
 }

@@ -499,7 +499,7 @@ namespace Lab01
                 if (!isDrawing)
                 {
                     Selected = -1;
-                    //renderShapes();
+                    renderShapes();
                     currentShape = new MultiP_Poly();
                     currentShape.LineColor = currentLineColor;
                     currentShape.FillColor = currentFillColor;

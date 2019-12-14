@@ -19,12 +19,14 @@ namespace Lab01
             base.set(A, B);
 
 
-            p2.Y = p1.Y + (int)Math.Round((p2.X - p1.X) / 2.0 * Math.Sqrt(3));
+            p2r.Y = p2.Y = p1.Y + (int)Math.Round((p2.X - p1.X) * Math.Sqrt(3) / 2.0);
+
+            int rx = Math.Abs(p1.X - p2.X) / 2, ry = Math.Abs(p1.Y - p2.Y) / 2;
 
             //Tọa độ các đỉnh            
-            nPoints[0].setPoint((p1.X + p2.X) / 2, p2.Y);
-            nPoints[1].setPoint(p1.X, p1.Y);
-            nPoints[2].setPoint(p2.X, p1.Y);
+            nPoints[0].setPoint(0, ry);
+            nPoints[1].setPoint(-rx, -ry);
+            nPoints[2].setPoint(rx, -ry);
         }
     }
 }

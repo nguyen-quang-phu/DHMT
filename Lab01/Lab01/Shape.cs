@@ -171,7 +171,7 @@ namespace Lab01
             gl.Rotate(Angle, 0.0, 0.0, 1.0);
 
             Rectangle box = new Rectangle();
-            int x1 = p1.X - cx - 5, y1 = p1.Y - cy - 5, x2 = p2.X - cx + 5, y2 = p2.Y - cy + 5;
+            int x1 = p1.X - cx - 5, y1 = p1.Y - cy - 10, x2 = p2.X - cx + 5, y2 = p2.Y - cy + 10;
             Point pi = new Point(x1, y1),
                 pj = new Point(x2, y2);
             box.LineColor = new Color(0.5f, 0.5f, 0.5f);
