@@ -9,8 +9,6 @@ namespace Lab01
 {
     class Circle : Ellipse
     {
-        
-
         //Vẽ điểm ảnh với nét vẽ dày tùy chọn
         private void DrawPoint(OpenGL gl, int u, int v)
         {

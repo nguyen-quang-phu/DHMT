@@ -10,8 +10,10 @@ namespace Lab01
 {
     class MultiP_Poly : Polygon
     {
+        // List các điểm của đa giác
         List<Point> vertexes = new List<Point>();
 
+        // Thêm đỉnh vào list
         public void addVertex(Point p)
         {
             vertexes.Add(p);

@@ -9,6 +9,7 @@ namespace Lab01
 {
     class Line : Object
     {
+        // các constructor 
         public Line() { }
         public Line(Point s, Point e)
         {
@@ -20,6 +21,8 @@ namespace Lab01
             p1.setPoint(A.X, A.Y);
             p2.setPoint(B.X, B.Y);
         }
+
+        // Lấy các đầu mút
         public Point getP1()
         {
             return p1;
@@ -28,6 +31,7 @@ namespace Lab01
         {
             return p2;
         }
+
         public override bool isInsideBox(int x, int y)
         {
             if (Math.Abs(y - p1.Y) <= 2.0 && Math.Abs(p2.Y - p1.Y) <= 2.0)
@@ -112,12 +116,16 @@ namespace Lab01
 
         public override void Draw(OpenGL gl)
         {
+            // Gán màu vẽ bằng LineColor
             gl.Color(LineColor.R, LineColor.G, LineColor.B);
+            // Gán độ dày nét vẽ bằng LineWidth
             gl.LineWidth(LineWidth);
-
+            // Mở chế độ vẽ Line
             gl.Begin(OpenGL.GL_LINES);
+            // 2 đầu mút
             gl.Vertex2sv(new short[] { (short)p1.X, (short)p1.Y });
             gl.Vertex2sv(new short[] { (short)p2.X, (short)p2.Y });
+            //
             gl.End();
         }
     }

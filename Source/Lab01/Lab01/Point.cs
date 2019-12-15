@@ -10,6 +10,7 @@ namespace Lab01
     {
         public int X { get; set; }  //Tọa độ x
         public int Y { get; set; }  //Tọa độ y
+        // Set tọa độ điểm
         public Point(int x = 0, int y = 0)
         {
             X = x;
@@ -25,6 +26,8 @@ namespace Lab01
             X = c.X;
             Y = c.Y;
         }
+
+        // Lấy tọa độ điểm
         public int getX() { return X; }
         public int getY() { return Y; }
     }

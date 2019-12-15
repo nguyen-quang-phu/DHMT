@@ -9,15 +9,19 @@ namespace Lab01
 {
     class Object
     {
+        // Màu nét vẽ
         public Color LineColor { get; set; } = new Color();
+        // Màu tô
         public Color FillColor { get; set; } = new Color();
+        // Góc xoay
         public double Angle { get; set; } = 0.0;
-        //Độ dày viền
+        // Độ dày viền
         public int LineWidth { get; set; } = 1;
-        //Điểm chặn trên trái
+        // Điểm chặn trên trái
         protected Point p1 = new Point();
-        //Điểm chặn dưới phải
+        // Điểm chặn dưới phải
         protected Point p2 = new Point();
+        // Set 2 điểm chặn
         public virtual void set(Point A, Point B)
         {
             p1.setPoint(Math.Min(A.X, B.X), Math.Min(A.Y, B.Y));

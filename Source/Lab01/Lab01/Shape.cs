@@ -17,20 +17,24 @@ namespace Lab01
             p1.setPoint(pi.X < pj.X ? pi.X : pj.X, pi.Y < pj.Y ? pi.Y : pj.Y);
             p2.setPoint(pi.X > pj.X ? pi.X : pj.X, pi.Y > pj.Y ? pi.Y : pj.Y);
         }
-
+        //Xác định hình có được chọn không
         public override bool isInsideBox(int x, int y)
         {
+            // Tính tâm
             int cx = (p1.X + p2.X) / 2, cy = (p1.Y + p2.Y) / 2;
+            // phải trừ đi tâm vì trước khi vẽ đều tịnh tiến 1 đoạn cx,cy
             x -= cx;
             y -= cy;
+            // tính 
             int u = (int)Math.Round(x * Math.Cos(-Angle * Math.PI / 180) - y * Math.Sin(-Angle * Math.PI / 180)),
                 v = (int)Math.Round(y * Math.Cos(-Angle * Math.PI / 180) + x * Math.Sin(-Angle * Math.PI / 180));
             x = u; y = v;
             return !(x < p1.X - cx || x > p2.X - cx || y < p1.Y - cy || y > p2.Y - cy);
         }
-
+        // Lấy các điểm điều khiển
         public override int getControlPointId(int x, int y)
         {
+            // Do tịnh tiến hình nên tâm hình chính là gốc tọa độ
             int cx = 0, cy = 0;
             if (Angle != 0)
             {
@@ -41,7 +45,7 @@ namespace Lab01
                     v = (int)Math.Round(y * Math.Cos(-Angle * Math.PI / 180) + x * Math.Sin(-Angle * Math.PI / 180));
                 x = u; y = v;
             }
-
+            // tính tọa độ 2 điểm chặn của control box với epsilon=5
             int x1 = p1.X - cx - 5, y1 = p1.Y - cy - 5, x2 = p2.X - cx + 5, y2 = p2.Y - cy + 5;
             int xm = cx == 0 ? (p1.X + p2.X) / 2 : 0,
                 ym = cy == 0 ? (p1.Y + p2.Y) / 2 : 0;

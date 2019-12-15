@@ -10,7 +10,7 @@ namespace Lab01
     {
         public Pentagon()
         {
-            nPoly = 5;
+            nPoly = 5;// ngũ giác
             init();
         }
 
@@ -47,8 +47,9 @@ namespace Lab01
             //nPoints[2].setPoint(Min.X + dA2, Min.Y);
             //nPoints[3].setPoint(Max.X - dA2, Min.Y);
             base.set(A, B);
-            p2r.Y = p2.Y = p1.Y + (p2.X - p1.X);
-            int rx = Math.Abs(p1.X - p2.X) / 2, ry = Math.Abs(p1.Y - p2.Y) / 2;
+            p2r.Y = p2.Y = p1.Y + (p2.X - p1.X);// tọa độ 
+            int rx = Math.Abs(p1.X - p2.X) / 2;
+            int ry = Math.Abs(p1.Y - p2.Y) / 2;
 
             int x18 = (int)Math.Round(rx * Math.Cos(18 * Math.PI / 180)),
                 x54 = (int)Math.Round(rx * Math.Cos(54 * Math.PI / 180)),
