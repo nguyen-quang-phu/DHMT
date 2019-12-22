@@ -23,8 +23,8 @@ namespace Lab01
             point_ymin = 2000;
             point_ymax = 0;
         }
-
-        public bool findIntersectGLPoint(int x1, int y1, int x2, int y2, int y, ref int x) //Tìm giao điểm của dòng quét y và cạnh
+        //kiểm tra xem có giao điểm của dòng quét y và cạnh và trả ra giá trị giao điểm
+        public bool findIntersectGLPoint(int x1, int y1, int x2, int y2, int y, ref int x) 
         {
             if (y2 == y1)
                 return false;
@@ -47,12 +47,8 @@ namespace Lab01
         {
             if (polygon.Count() > 2)
             {
-                //foreach(Point p in polygon)
-                //{
-                //    if (p)
-                //}
-
-                for (int a = 1; a < polygon.Count(); a++) //Tìm point_ymin và point_ymax; Xây dựng list cạnh
+                //Tìm point_ymin và point_ymax; Xây dựng list cạnh
+                for (int a = 1; a < polygon.Count(); a++) 
                 {
                     if (polygon[a - 1].getY() < point_ymin)
                         point_ymin = polygon[a - 1].getY();
@@ -61,6 +57,7 @@ namespace Lab01
                     Line current = new Line(polygon[a - 1], polygon[a]);
                     ListOfEdges.Add(current);
                 }
+
                 int i = polygon.Count() - 1;
                 if (polygon[i].getY() > point_ymax)
                     point_ymax = polygon[i].getY();
@@ -82,6 +79,7 @@ namespace Lab01
                     if (findIntersectGLPoint(ListOfEdges[j].getP1().getX(), ListOfEdges[j].getP1().getY(), ListOfEdges[j].getP2().getX(), ListOfEdges[j].getP2().getY(), i, ref intersectX))
                     {
                         Point p = new Point(intersectX, i);
+                        // đầu mút 1 có y> đầu mút 2
                         if (ListOfEdges[j].getP1().getY() > ListOfEdges[j].getP2().getY())
                         {
                             if (p.getY() == ListOfEdges[j].getP1().getY())
@@ -98,7 +96,8 @@ namespace Lab01
                 }
                 int intersectSize = ListOfIntersectPoints.Count();
                 Point swap = new Point(0, 0);
-                for (int a = 0; a < intersectSize - 1; a++)//Sắp xếp các giao điểm lại theo tọa độ x
+                //Sắp xếp các giao điểm lại theo tọa độ x
+                for (int a = 0; a < intersectSize - 1; a++)
                     for (int j = i + 1; j < intersectSize; j++)
                     {
                         if (ListOfIntersectPoints[a].getX() > ListOfIntersectPoints[a].getX())

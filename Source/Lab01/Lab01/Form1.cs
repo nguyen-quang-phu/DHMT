@@ -526,9 +526,6 @@ namespace Lab01
                     chosenControlPointId = shapes[objectId].getControlPointId(x, y);
                     if (chosenControlPointId >= 0)
                     {
-                        //lb_Forward.Enabled = true;
-                        //lb_Backward.Enabled = true;
-                        //lb_Delete.Enabled = true;
                         return;
                     }
                 }
@@ -547,10 +544,6 @@ namespace Lab01
                 if (objectId >= 0) //Có hình được chọn thì vẽ điểm điều khiển cho hình đó
                 {
                     shapes[objectId].drawControlBox(gl);
-                    //lst_Width.Value = shapes[objectId].LineWidth;
-                    //lb_Forward.Enabled = true;
-                    //lb_Backward.Enabled = true;
-                    //lb_Delete.Enabled = true;
                 }
 
                 return;
@@ -616,7 +609,6 @@ namespace Lab01
                 //Đang vẽ hình
                 currentShape.set(pStart, pEnd); //Cập nhật kích thước hình đang vẽ      
                 renderShapes();
-                //currentShape.Fill(gl, currentModeFill);
                 currentShape.Draw(gl);
                 gl.Flush();
             }
